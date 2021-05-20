@@ -1,17 +1,22 @@
 import axios from "axios"
 
+
+const API_KEY = process.env.VUE_APP_TMDB_API_KEY
 const request = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
-    api_key: "80ced8591ed61ab4a22df20840478047",
+    api_key: API_KEY,
     language: "ko-KR",
-    page: 1,
   },
 })
 // popular, nowplaying, Detail -> similar, random, search 
 export const movieApi = {
   popular: () => request.get("movie/popular"),
-  nowPlaying: () => request.get("movie/now_playing"),
+  nowPlaying: (num) => request.get("movie/now_playing", {
+    params: {
+      page: num,
+    }
+  }),
   movieDetail: (id) =>
     request.get(`movie/${id}`, {
       params: { append_to_response: "videos" },

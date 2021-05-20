@@ -25,7 +25,6 @@ export default {
   async mounted() {
   try {
     const { data } = await movieApi.popular()
-    console.log(data.results)
     this.popular = data.results
     } catch (error) {
       console.log(error)
