@@ -3,12 +3,37 @@
     <div id="nav">
       <router-link to="/popular">Popular</router-link> |
       <router-link to="/nowplaying">nowplaying</router-link> |
-      <router-link to="/random">Random</router-link> |
+      <router-link to="/accounts/login">Login</router-link> |
+      <router-link to="/accounts/signup">signup</router-link> |
       <router-link to="/moviedetail/632357">moviedetail</router-link>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data: function () {
+    return {
+      isLogin: false,
+    }
+  },
+  methods: {
+    logout: function () {
+      this.isLogin = false
+      localStorage.removeItem('jwt')
+      this.$router.push({ name: 'Login' })
+    }
+  },
+  created: function () {
+    const token = localStorage.getItem('jwt')
+    if (token) {
+      this.isLogin = true
+    }
+  }
+}
+</script>
 
 <style>
 #app {

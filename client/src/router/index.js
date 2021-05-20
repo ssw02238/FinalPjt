@@ -4,6 +4,8 @@ import NowPlaying from '../views/NowPlaying.vue'
 import MovieDetail from '../views/MovieDetail.vue'
 import Popular from '../views/Popular.vue'
 import Random from '../views/Random.vue'
+import Signup from '@/views/accounts/Signup'
+import Login from '@/views/accounts/Login'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,16 @@ const routes = [
     path: '/random',
     name: 'Random',
     component: Random
+  },
+  {
+    path: '/accounts/signup',
+    name: 'Signup',
+    component: Signup,
+  },
+  {
+    path: '/accounts/login',
+    name: 'Login',
+    component: Login,
   },
 ]
 
