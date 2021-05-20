@@ -127,7 +127,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 수업 코드에 있지만 몰라서 일단 놔둠 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
 
