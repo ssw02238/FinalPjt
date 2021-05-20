@@ -5,7 +5,7 @@
     v-for="(pop_movie, idx) in popular" :key="idx"
     :pop_movie="pop_movie"/>
   </div>
-  </div>
+</div>
 </template>
 
 <script>
