@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Latest from '../views/Latest.vue'
+import NowPlaying from '../views/NowPlaying.vue'
 import MovieDetail from '../views/MovieDetail.vue'
 import Popular from '../views/Popular.vue'
 import Random from '../views/Random.vue'
@@ -14,9 +14,9 @@ const routes = [
     component: Popular
   },
   {
-    path: '/latest',
-    name: 'Latest',
-    component: Latest
+    path: '/nowplaying',
+    name: 'NowPlaying',
+    component: NowPlaying
   },
   {
     path: '/moviedetail/:id',
