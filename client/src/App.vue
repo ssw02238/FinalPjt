@@ -2,8 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/popular">Popular</router-link> |
-      <router-link to="/latest">Latest</router-link> |
-      <router-link to="/random">Random</router-link>
+      <router-link to="/nowplaying">nowplaying</router-link> |
+      <router-link to="/random">Random</router-link> |
+      <router-link to="/moviedetail/632357">moviedetail</router-link>
     </div>
     <router-view/>
   </div>

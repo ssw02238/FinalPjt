@@ -5,12 +5,13 @@ const request = axios.create({
   params: {
     api_key: "80ced8591ed61ab4a22df20840478047",
     language: "ko-KR",
+    page: 1,
   },
 })
-// popular, latest, Detail -> similar, random, search 
+// popular, nowplaying, Detail -> similar, random, search 
 export const movieApi = {
   popular: () => request.get("movie/popular"),
-  latest: () => request.get("movie/latest"),
+  nowPlaying: () => request.get("movie/now_playing"),
   movieDetail: (id) =>
     request.get(`movie/${id}`, {
       params: { append_to_response: "videos" },
