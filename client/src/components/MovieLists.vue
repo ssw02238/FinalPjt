@@ -1,7 +1,7 @@
 <template>
 <div class="col-lg-3 col-sm-6 mb-4">
   <div class="card">
-    <div @click="goDetail(li.id)" v-if="pop_movie">
+    <div @click="goDetail(pop_movie.id)" v-if="pop_movie">
       <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+pop_movie.poster_path" class="img-fluid" alt="movie_poster" style="height: 400px">
       <div class="card-body" style="height: 150px">
         <h5 class="card-title"><strong>{{ pop_movie.title }} |</strong></h5>
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     goDetail(id) {
-      this.$router.push(`detail/${id}`)
+      this.$router.push(`moviedetail/${id}`)
     }
   }
 }
