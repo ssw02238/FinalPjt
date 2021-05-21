@@ -1,5 +1,15 @@
 <template>
+  
   <div class="createArticle container" style="border: 1px solid black;">
+    <select v-model="selected">
+      <option disabled value="">Please select one</option>
+      <option v-for="(movie, idx) in movies"
+      :key="idx"
+      :value="movie.id"
+      >
+      {{ movie.title }}
+      </option>
+    </select>
     <div class="mb-5">
       <span>제목: </span>
       <input class="mt-5" type="text" v-model.trim="title" @keyup.enter="createArticle"> <br>
@@ -18,7 +28,6 @@
 
 <script>
 import axios from'axios'
-
 export default {
   name: 'CreateArticle',
   data: function () {
@@ -27,6 +36,7 @@ export default {
       content: null,
       rating: null,
       movies: [],
+      selected: '',
     }
   },
   methods: {
@@ -43,7 +53,6 @@ export default {
         content: this.content,
         rating: this.rating,
       }
-
       if (ArticleItem.title) {
         axios({
           method: 'post',
@@ -54,6 +63,8 @@ export default {
           .then((res) => {
             console.log(res)
             this.$router.push({ name: 'ArticleList' })
+
+            console.log(this.selected)
           })
           .catch((err) => {
             console.log(err)
@@ -84,7 +95,6 @@ export default {
 }
 </script>
 <style scoped>
-
   .get_content {
     width: 40%;
     height: 80px;
