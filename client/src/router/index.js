@@ -6,7 +6,9 @@ import Popular from '../views/Popular.vue'
 import Random from '../views/Random.vue'
 import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
+import ArticleList from '@/views/community/ArticleList'
 import CreateArticle from '@/views/community/CreateArticle'
+
 
 Vue.use(VueRouter)
 
@@ -42,9 +44,15 @@ const routes = [
     component: Login,
   },
   {
+    path: '/community/articlelist',
+    name: 'ArticleList',
+    component: ArticleList,
+  },
+  {
     path: '/community/createarticle',
     name: 'CreateArticle',
     component: CreateArticle,
+
   },
 ]
 

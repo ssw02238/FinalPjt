@@ -7,8 +7,8 @@ from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from .serializers import CommentSerializer, ArticleListSerializer, ArticleSerializer
-from .models import Comment, Article
+from .serializers import ArticleListSerializer, ArticleSerializer
+from .models import Article
 
 
 # @api_view(['POST'])
@@ -45,7 +45,6 @@ from .models import Comment, Article
 
 @api_view(['GET', 'POST'])
 @authentication_classes([JSONWebTokenAuthentication])
-@permission_classes([IsAuthenticated])
 def article_list(request):
     if request.method == 'GET':
         # articles = Article.objects.all()
