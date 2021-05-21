@@ -2,11 +2,11 @@
   <div class="createArticle container" style="border: 1px solid black;">
     <div class="mb-5">
       <span>제목: </span>
-      <input class="mt-5" type="text" v-model.trim="title" @keyup.enter="createArticle"> <br>
+      <input class="mt-5" type="text" v-model.trim="title"> <br>
     </div>
     <div class="mb-5">
       <span>내용: </span>
-      <input class="get_content" type="text" v-model.trim="content" @keyup.enter="createArticle"> <br>
+      <input class="get_content" type="text" v-model.trim="content"> <br>
     </div>
     <div class="mb-5">
       <span>별점: </span>
