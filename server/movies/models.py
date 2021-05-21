@@ -24,3 +24,15 @@ class MovieComment(models.Model):
     # shell plus 로 몇 번째 댓글인지 보기 위해 
     def __str__(self):
         return self.content 
+
+
+class Movie(models.Model):
+    title = models.CharField(max_length=100)
+    overview = models.TextField(blank=True)
+    release_date = models.DateField()
+    popularity = models.FloatField()
+    poster_path = models.CharField(max_length=200, blank=True, null=True)
+    vote_count = models.IntegerField()
+    vote_average = models.FloatField()
+    
+        

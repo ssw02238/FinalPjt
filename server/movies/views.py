@@ -6,10 +6,23 @@ from rest_framework.decorators import api_view
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+import requests
+from .serializers import ArticleListSerializer, ArticleSerializer, MovieCommentSerializer, MovieSerializer
+from .models import Article, Movie
 
-from .serializers import ArticleListSerializer, ArticleSerializer, MovieCommentSerializer
-from .models import Article, MovieComment
+@api_view(['GET'])
+def seeding(request):
+    API_KEY = '80ced8591ed61ab4a22df20840478047'
+    for pageNum in range(1, 10): 
+        URL = f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=ko-KR&page={pageNum}'
+        res = requests.get(URL).json()
 
+        for movie_info in res['results']:
+            if not Movie.objects.filter(id=movie_info['id']).exists():
+                serializer = MovieSerializer(data=movie_info)
+                if serializer.is_valid(raise_exception=True):
+                    movie = serializer.save(id=movie_info['id'])
+    return Response('성공적으로 가져왔습니다.')
 
 @api_view(['GET', 'POST'])
 @authentication_classes([JSONWebTokenAuthentication])
