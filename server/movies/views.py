@@ -24,6 +24,16 @@ def seeding(request):
                     movie = serializer.save(id=movie_info['id'])
     return Response('성공적으로 가져왔습니다.')
 
+
+@api_view(['GET'])
+@authentication_classes([JSONWebTokenAuthentication])
+def movie_list(request):
+    movies = get_list_or_404(Movie)
+    if request.method == 'GET':
+        serializer = MovieSerializer(movies, many=True)
+        return Response(serializer.data)
+
+
 @api_view(['GET', 'POST'])
 @authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
