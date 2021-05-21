@@ -28,6 +28,7 @@
       <div v-else class="mt-4">
         <p>해당 영상이 존재하지 않습니다.</p>
       </div>
+    <MovieComment/>
     </div>
   </div>
 
@@ -40,6 +41,7 @@
 
 <script>
 import { movieApi } from '../utils/axios'
+import MovieComment from '../components/MovieComment.vue'
 
 export default {
   name: 'moviedetail',
@@ -48,6 +50,9 @@ export default {
       movieDetail: {},
       genre: '',
     }
+  },
+  components: {
+    MovieComment
   },
   async mounted() {
     const { id } = this.$route.params
