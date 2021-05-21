@@ -4,9 +4,7 @@
       <NowMovieLists
       v-for="(now_movie, idx) in nowplaying"
       :key="idx"
-      :now_movie="now_movie"
-      />
-      <div></div>
+      :now_movie="now_movie"/>
     </div>
   </div>
 </template>
