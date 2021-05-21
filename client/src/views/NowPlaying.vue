@@ -47,7 +47,6 @@ export default {
         const { data } = await movieApi.nowPlaying(1)
         this.nowplaying = data.results
         this.nowplaying = this.nowplaying.concat(this.data2)
-        console.log(this.nowplaying)
       }
     catch (error) {
       console.log(error)
