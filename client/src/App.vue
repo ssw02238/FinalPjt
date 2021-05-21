@@ -4,7 +4,8 @@
       <router-link to="/popular">Popular</router-link> |
       <router-link to="/nowplaying">nowplaying</router-link> |
       <router-link to="/accounts/login">Login</router-link> |
-      <router-link to="/accounts/signup">signup</router-link>
+      <router-link to="/accounts/signup">signup</router-link>|
+      <router-link to="/community/articlelist">articlelist</router-link>
     </div>
     <router-view/>
   </div>
