@@ -1,5 +1,6 @@
+from django.db import models
 from rest_framework import serializers
-from .models import Article, MovieComment
+from .models import Article, MovieComment, Movie
 
 
 class ArticleListSerializer(serializers.ModelSerializer):
@@ -22,3 +23,9 @@ class ArticleSerializer(serializers.ModelSerializer):
         model = Article
         fields = '__all__'
 
+
+class MovieSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
