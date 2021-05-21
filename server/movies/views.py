@@ -99,4 +99,3 @@ def article_detail(request, article_pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
-
