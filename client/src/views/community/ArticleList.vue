@@ -1,9 +1,12 @@
 <template>
   <div>
+    <router-link :to="{ name: 'CreateArticle' }"><button>create article</button></router-link>
     <ul>
     <li v-for="(article, idx) in articles" :key="idx">
-      <span>{{ article.title }}</span>
-      <span>{{ article.content }}</span>
+      <p>{{ article.title }}</p>
+      <p>{{ article.content }}</p>
+      <p>{{ article.rating }}</p>
+
     </li>
     </ul>
   </div>
