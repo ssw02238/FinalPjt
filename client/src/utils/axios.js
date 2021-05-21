@@ -1,6 +1,5 @@
 import axios from "axios"
 
-
 const API_KEY = process.env.VUE_APP_TMDB_API_KEY
 const request = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -11,7 +10,11 @@ const request = axios.create({
 })
 // popular, nowplaying, Detail -> similar, random, search 
 export const movieApi = {
-  popular: () => request.get("movie/popular"),
+  popular: (num) => request.get("movie/popular", {
+    params: {
+      page: num,
+    }
+  }),
   nowPlaying: (num) => request.get("movie/now_playing", {
     params: {
       page: num,

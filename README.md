@@ -16,3 +16,18 @@
 - server 수정 
   - base.html 및 url 경로 설정
 
+
+
+## 05/19
+
+- vue를 통해 api data 가져오기 
+
+
+
+## 05/20
+
+- Popular , Now_playing , Detail 생성 
+  - page 누적 영화 데이터 가져오기 
+  - detail youtube 가져오기 
+  - card 형식 정렬 
+  - router 기능으로 눌렀을 때 detail 페이지로 
