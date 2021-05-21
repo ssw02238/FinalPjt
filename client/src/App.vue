@@ -1,13 +1,17 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/popular">Popular</router-link> |
-      <router-link to="/nowplaying">nowplaying</router-link> |
-      <router-link to="/accounts/login">Login</router-link> |
-      <router-link to="/accounts/signup">signup</router-link>|
-      <router-link to="/community/articlelist">articlelist</router-link>
+      <span v-if="isLogin">
+        <router-link to="/popular">Popular</router-link> |
+        <router-link to="/nowplaying">nowplaying</router-link> |
+        <router-link :to="{ name: 'ArticleList' }">Article List</router-link> |
+      </span>
+      <span v-else>
+        <router-link to="/accounts/login">Login</router-link> |
+        <router-link to="/accounts/signup">signup</router-link> |
+      </span>  
     </div>
-    <router-view/>
+    <router-view @login="isLogin = true"/>
   </div>
 </template>
 

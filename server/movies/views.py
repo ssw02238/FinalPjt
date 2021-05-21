@@ -1,4 +1,3 @@
-
 from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework import status
 from rest_framework.response import Response
@@ -49,8 +48,7 @@ from .models import Article
 def article_list(request):
     if request.method == 'GET':
         # articles = Article.objects.all()
-        articles = get_list_or_404(Article)
-        serializer = ArticleListSerializer(articles, many=True)
+        serializer = ArticleListSerializer(request.user.todos, many=True)
         return Response(serializer.data)
     
     elif request.method == 'POST':

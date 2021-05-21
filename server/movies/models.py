@@ -7,6 +7,7 @@ class Article(models.Model):
     title = models.CharField(max_length=10)
     rating = models.IntegerField()
     content = models.TextField()
+    rating = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -15,6 +16,7 @@ class Article(models.Model):
 #     content = models.CharField(max_length=200)
 #     created_at = models.DateTimeField(auto_now_add=True)
 #     updated_at = models.DateTimeField(auto_now=True)
+
 
 #     # shell plus 로 몇 번째 댓글인지 보기 위해 
 #     def __str__(self):
