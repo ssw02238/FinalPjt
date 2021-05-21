@@ -1,9 +1,18 @@
 <template>
-  <div>
-    <input type="text" v-model.trim="title" @keyup.enter="createArticle">
-    <input type="text" v-model.trim="content" @keyup.enter="createArticle">
-    <input type="text" v-model.trim="rating" @keyup.enter="createArticle">
-    <button @click="createArticle">+</button>
+  <div class="createArticle container" style="border: 1px solid black;">
+    <div class="mb-5">
+      <span>제목: </span>
+      <input class="mt-5" type="text" v-model.trim="title" @keyup.enter="createArticle"> <br>
+    </div>
+    <div class="mb-5">
+      <span>내용: </span>
+      <input class="get_content" type="text" v-model.trim="content" @keyup.enter="createArticle"> <br>
+    </div>
+    <div class="mb-5">
+      <span>별점: </span>
+      <input placeholder="숫자를 입력하세요" type="text" v-model.trim="rating" @keyup.enter="createArticle"> <br> 
+    </div>
+    <button @click="createArticle" class="btn btn-danger mb-3">작성하기</button>
   </div>
 </template>
 
@@ -53,4 +62,10 @@ export default {
   }
 }
 </script>
+<style scoped>
 
+  .get_content {
+    width: 40%;
+    height: 80px;
+  }
+</style>

@@ -1,11 +1,25 @@
 <template>
   <div>
-    <ul>
-    <li v-for="(article, idx) in articles" :key="idx">
-      <span>{{ article.title }}</span>
-      <span>{{ article.content }}</span>
-    </li>
-    </ul>
+    <router-link :to="{ name: 'CreateArticle' }"><button class="btn btn-success">새 글 작성하기</button></router-link> 
+    <hr>
+    <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">제목</th>
+          <th scope="col">내용</th>
+          <th scope="col">별점</th>
+        </tr>
+      </thead>
+      <tbody v-for="(article, idx) in articles" :key="idx">
+        <tr>
+          <th scope="row">{{ article.id }}</th>
+          <td>{{ article.title }}</td>
+          <td>{{ article.content }}</td>
+          <td>{{ article.rating }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

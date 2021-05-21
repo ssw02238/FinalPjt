@@ -5,6 +5,7 @@
         <router-link to="/popular">Popular</router-link> |
         <router-link to="/nowplaying">nowplaying</router-link> |
         <router-link :to="{ name: 'ArticleList' }">Article List</router-link> |
+        <router-link @click.native="logout" to="#">Logout</router-link>
       </span>
       <span v-else>
         <router-link to="/accounts/login">Login</router-link> |

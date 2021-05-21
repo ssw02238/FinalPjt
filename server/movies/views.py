@@ -7,27 +7,23 @@ from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from .serializers import ArticleListSerializer, ArticleSerializer
-from .models import Article
+from .serializers import ArticleListSerializer, ArticleSerializer, MovieCommentSerializer
+from .models import Article, MovieComment
 
 
-# @api_view(['POST'])
-# @authentication_classes([JSONWebTokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def comments_create(request, article_pk):
-#     if request.user.is_authenticated:
-#         article = get_object_or_404(Article, pk=article_pk)
-
-#         if request.method == 'GET':
-#             serializer = CommentSerializer(request.article.comments, many=True)
-#             return Response(serializer.data)
-#         elif request.method == 'POST':
-#             serializer = CommentSerializer(data=request.data)
-#             if serializer.is_valid(raise_exception=True):
-#                 comment = serializer.save(commit=False)
-#                 comment.article = article 
-#                 comment.save()
-#                 return Response(comment.data, status=status.HTTP_201_CREATED)
+@api_view(['GET', 'POST'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def comments_create(request):
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            serializer = MovieCommentSerializer(request.user.movieComments, many=True)
+            return Response(serializer.data)
+        elif request.method == 'POST':
+            serializer = MovieCommentSerializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save(user=request.user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 # @api_view(['DELETE'])
@@ -48,7 +44,7 @@ from .models import Article
 def article_list(request):
     if request.method == 'GET':
         # articles = Article.objects.all()
-        serializer = ArticleListSerializer(request.user.todos, many=True)
+        serializer = ArticleListSerializer(request.user.articles, many=True)
         return Response(serializer.data)
     
     elif request.method == 'POST':
