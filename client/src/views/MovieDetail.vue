@@ -44,7 +44,9 @@ export default {
     }
   },
   async mounted() {
+
     const { id } = this.$route.params
+    console.log(id)
     const { data } = await movieApi.movieDetail(id)
     this.movieDetail = data
     this.genre = this.movieDetail.genres[0]

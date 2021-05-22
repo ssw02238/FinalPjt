@@ -7,16 +7,16 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">제목</th>
-          <th scope="col">내용</th>
           <th scope="col">별점</th>
+          <th scope="col">아이콘</th>
         </tr>
       </thead>
-      <tbody v-for="(article, idx) in articles" :key="idx">
+      <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.id)">
         <tr>
           <th scope="row">{{ article.id }}</th>
           <td>{{ article.title }}</td>
-          <td>{{ article.content }}</td>
           <td>{{ article.rating }}</td>
+          
         </tr>
       </tbody>
     </table>
@@ -53,9 +53,13 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-        this.title = null
-        this.content = null
     },
+    
+    goDetail(id) {
+      this.$router.push({ name: 'ArticleDetail',  params: {id: id }})
+  
+    },
+
   },
   created: function () {
     if (localStorage.getItem('jwt')) {
