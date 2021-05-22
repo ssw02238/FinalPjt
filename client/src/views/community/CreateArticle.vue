@@ -22,12 +22,23 @@
       <span>별점: </span>
       <input placeholder="숫자" type="number" min='0' max='5' v-model.trim="rating" @keyup.enter="createArticle"> <br> 
     </div>
-    <button @click="createArticle" class="btn btn-danger mb-3">작성하기</button>
-  </div>
+    <button @click="createArticle" class="btn btn-danger mb-3" >작성하기</button> 
+    <div>
+      <b-button v-b-modal.modal-1 @click="getSimilar">유사 영화 추천</b-button>
+
+      <b-modal id="modal-1" title="유사 영화 추천">
+        <vue-carousel :data="data"></vue-carousel>
+      </b-modal>
+    </div>
+</div>
+
+
 </template>
 
 <script>
 import axios from'axios'
+import { movieApi } from "@/utils/axios"
+
 export default {
   name: 'CreateArticle',
   data: function () {
@@ -37,6 +48,10 @@ export default {
       rating: null,
       movies: [],
       selected: '',
+      similars: [],
+      data: [
+        <div class="example-slide">hi</div>,
+      ]
     }
   },
   methods: {
@@ -83,6 +98,16 @@ export default {
         .catch((err) => {
           console.log(err)
         })
+    },
+    async getSimilar() {
+      try{
+        const {data} = await movieApi.movieSimilar(this.selected)
+        this.similars = data.results
+        console.log(this.similars)
+      }
+      catch (error) {
+        console.log(error)
+      }
     }
   },
     created: function () {
@@ -99,4 +124,14 @@ export default {
     width: 40%;
     height: 80px;
   }
+
+  .example-slide {
+  align-items: center;
+  background-color: #666;
+  color: #999;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  min-height: 10rem;
+ } 
 </style>
