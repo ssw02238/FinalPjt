@@ -65,9 +65,10 @@ def comments_create(request):
 @api_view(['GET', 'POST'])
 @authentication_classes([JSONWebTokenAuthentication])
 def article_list(request):
+    articles = get_list_or_404(Article)
     if request.method == 'GET':
         # articles = Article.objects.all()
-        serializer = ArticleListSerializer(request.user.articles, many=True)
+        serializer = ArticleListSerializer(articles, many=True)
         return Response(serializer.data)
     
     elif request.method == 'POST':
