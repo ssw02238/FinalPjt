@@ -30,6 +30,7 @@ export default {
   data: function () {
     return {
       articles: [],
+      id: null,
     }
   },
   methods: {
@@ -67,7 +68,12 @@ export default {
     } else {
       this.$router.push({name: 'Login'})
     }
-  }
+  },
+  async mounted() {
+    const { id } = this.$route.params
+    this.id = id
+    console.log(this.id)
+  },
 }
 </script>
 
