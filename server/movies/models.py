@@ -5,6 +5,7 @@ from django.conf import settings
 # Create your models here.
 class Article(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="articles")
+    movie_title = models.CharField(max_length=50)
     title = models.CharField(max_length=10)
     rating = models.IntegerField()
     content = models.TextField()

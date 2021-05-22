@@ -34,7 +34,9 @@ export default {
   data: function () {
     return {
       articles: [],
-      movieId: null,
+
+      id: null,
+
     }
   },
   methods: {
@@ -73,7 +75,13 @@ export default {
       this.$router.push({name: 'Login'})
     }
   },
-  
+
+  async mounted() {
+    const { id } = this.$route.params
+    this.id = id
+    console.log(this.id)
+  },
+
 }
 </script>
 
