@@ -1,7 +1,9 @@
 <template>
   
   <div class="createArticle container" style="border: 1px solid black;">
-    <select v-model="movie_title">
+
+    <select v-model="movietitle">
+
       <option disabled value="">Please select one</option>
       <option v-for="(movie, idx) in movies"
       :key="idx"
@@ -59,8 +61,11 @@ export default {
       rating: null,
       movie_title: null, //[movie id, movie title]
       movies: [],
-      selected: [], // movie id 
+
+      selected: [],
+
       similars: [],
+      movietitle: null,
     }
   },
   methods: {
@@ -76,7 +81,8 @@ export default {
         title: this.rating,
         content: this.content,
         rating: this.rating,
-        movie_title: this.movie_title[1]
+        movietitle: this.movietitle[1],
+
       }
       if (ArticleItem.title) {
         axios({
@@ -87,7 +93,9 @@ export default {
         })
           .then((res) => {
             console.log(res)
-            this.$router.push({ name: 'ArticleList', params: { id: this.movie_title[0] }})
+
+            this.$router.push({ name: 'ArticleList', params: { id: this.movietitle[0] }})
+
           })
           .catch((err) => {
             console.log(err)
@@ -107,16 +115,16 @@ export default {
           console.log(err)
         })
     },
+
     async getSimilar() {
       try{
         const {data} = await movieApi.movieSimilar(this.selected)
         this.similars = data.results
-        console.log(this.similars)
       }
       catch (error) {
         console.log(error)
       }
-    }
+    },
   },
     created: function () {
       if (localStorage.getItem('jwt')) {

@@ -14,23 +14,29 @@
       <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.id)">
         <tr>
           <th scope="row">{{ article.id }}</th>
+          <th>{{ article.movietitle }}</th>
           <td>{{ article.title }}</td>
           <td>{{ article.rating }}</td>
-          
         </tr>
       </tbody>
     </table>
+
+
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+
+
 export default {
   name: 'ArticleList',
   data: function () {
     return {
       articles: [],
+
       id: null,
+
     }
   },
   methods: {
@@ -48,7 +54,6 @@ export default {
         headers: this.setToken()
       })
         .then((res) => {
-          console.log(res)
           this.articles = res.data
         })
         .catch((err) => {
@@ -58,22 +63,25 @@ export default {
     
     goDetail(id) {
       this.$router.push({ name: 'ArticleDetail',  params: {id: id }})
-  
     },
+
 
   },
   created: function () {
     if (localStorage.getItem('jwt')) {
       this.getArticles()
+
     } else {
       this.$router.push({name: 'Login'})
     }
   },
+
   async mounted() {
     const { id } = this.$route.params
     this.id = id
     console.log(this.id)
   },
+
 }
 </script>
 
