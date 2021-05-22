@@ -31,3 +31,29 @@
   - detail youtube 가져오기 
   - card 형식 정렬 
   - router 기능으로 눌렀을 때 detail 페이지로 
+
+
+
+## 5/21
+
+- Article - Comment 관계 설정 및 community 게시판 작성 
+  - MovieDetail에 Comment 작성하는 것으로 변경 
+  - Movie DB 문제로 인해 Community에 글- 댓글 관계로 재변경 
+- Movie DB 저장 성공 
+
+```python
+# def seeding - 바로 model 필드에 넣기
+# model 안에 movie class - 위에 필드랑 일치하게
+# serializer - x
+# db에 들어가는지 만 확인
+```
+
+
+
+## 5/22
+
+- modal 과 carousel이 적용 안됨 (bootstrap, bootstrap vue)
+  - 단 card, btn 등 다른 부트스트랩은 잘 적용됨 
+- community 게시판 내 ArticleDetail 생성 
+  - ArticleList에서 id를 params 로 받아 특정 article data 받기 
+
