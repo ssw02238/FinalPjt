@@ -30,4 +30,10 @@ export const movieApi = {
         query: keyword,
       },
     }),
+  movieSimilar: (id) =>
+  request.get(`movie/${id}/similar`, {
+    params: {
+       page: 1 
+      },
+  }),  
 }
