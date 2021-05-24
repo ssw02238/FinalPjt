@@ -9,15 +9,15 @@
     <table class="table" style="font-size:20px; border-radius: 1em;background-color:#ddcfd5;">
       <thead>
         <tr>
-          <th scope="col">번호</th>
+          <th scope="col">Rank</th>
           <th scope="col">영화 제목</th>
           <th scope="col">글 제목</th>
           <th scope="col">☆☆☆☆☆</th>
         </tr>
       </thead>
-      <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.id)">
+      <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.movieId)">
         <tr>
-          <th>{{ article.id }}</th>
+          <th>{{ idx+1 }}</th>
           <th>{{ article.movietitle }}</th>
           <th>{{ article.title }}</th>
           <th>{{ article.rating }}</th>
@@ -37,7 +37,6 @@ export default {
   data: function () {
     return {
       articles: [],
-
       id: null,
 
     }
@@ -65,7 +64,7 @@ export default {
     },
     
     goDetail(id) {
-      this.$router.push({ name: 'ArticleDetail',  params: {id: id }})
+      this.$router.push({ name: 'MovieDetail',  params: {id: id }})
     },
 
 

@@ -29,7 +29,6 @@
 
 <script>
 import axios from'axios'
-import { movieApi } from "@/utils/axios"
 
 export default {
   name: 'CreateArticle',
@@ -40,9 +39,6 @@ export default {
       rating: null,
       movietitle: null,
       movies: [],
-
-      selected: [],
-      similars: [],
     }
   },
   methods: {
@@ -59,6 +55,7 @@ export default {
         content: this.content,
         rating: this.rating,
         movietitle: this.movietitle[1],
+        movieId: this.movietitle[0]
       }
       if (ArticleItem.title) {
         axios({
@@ -89,16 +86,6 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-    },
-
-    async getSimilar() {
-      try{
-        const {data} = await movieApi.movieSimilar(this.selected)
-        this.similars = data.results
-      }
-      catch (error) {
-        console.log(error)
-      }
     },
   },
     created: function () {

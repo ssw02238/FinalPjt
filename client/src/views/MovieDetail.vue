@@ -47,6 +47,16 @@
           <div v-else class="mt-4">
             <p>해당 영상이 존재하지 않습니다.</p>
           </div>
+          <div v-for="(article, idx) in articles" :key="idx" class="bg-light">
+            <div v-if="article.movieId === id">
+              <p style="font-size:30px; color:black;">한줄평</p>
+              <ul>
+                <li style="color:black;">
+              {{ article.content}} / 별점: {{ article.rating }}
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -54,16 +64,30 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { movieApi } from "../utils/axios";
 export default {
   name: 'moviedetail',
   data() {
     return {
       movieDetail: {},
+      similars: [],
+      comments: [],
+      articles: '',
+      id: '',
     }
   },
+  created: function () {
+    if (localStorage.getItem('jwt')) {
+      this.getArticle()
+    } else {
+      this.$router.push({name: 'Login'})
+    }
+  },
+  
   async mounted() {
     const { id } = this.$route.params
+    this.id = id
     const { data } = await movieApi.movieDetail(id)
     this.movieDetail = data
   },
@@ -74,6 +98,36 @@ export default {
     },
     youtube(src) {
       return `https://www.youtube.com/embed/${src}`;
+    },
+    setToken: function () {
+      const jwtToken = localStorage.getItem('jwt')
+      const config = {
+        Authorization: `JWT ${jwtToken}`
+      }
+      return config 
+    },
+    getArticle: function () {
+      axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8000/movies/articles',
+        headers: this.setToken()
+      })
+        .then((res) => {
+          console.log(res.data)
+          this.articles = res.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    async getSimilar() {
+      try{
+        const {data} = await movieApi.movieSimilar(this.selected)
+        this.similars = data.results
+      }
+      catch (error) {
+        console.log(error)
+      }
     },
   },
 }
