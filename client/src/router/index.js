@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import NowPlaying from '../views/NowPlaying.vue'
 import MovieDetail from '../views/MovieDetail.vue'
 import Popular from '../views/Popular.vue'
-import Random from '../views/Random.vue'
 import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
 import ArticleList from '@/views/community/ArticleList'
@@ -28,11 +27,6 @@ const routes = [
     path: '/moviedetail/:id',
     name: 'MovieDetail',
     component: MovieDetail
-  },
-  {
-    path: '/random',
-    name: 'Random',
-    component: Random
   },
   {
     path: '/accounts/signup',

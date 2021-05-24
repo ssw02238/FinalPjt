@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <div id="nav">
-      <span v-if="isLogin">
-        <router-link to="/popular">Popular</router-link> |
-        <router-link to="/nowplaying">nowplaying</router-link> |
-        <router-link :to="{ name: 'ArticleList' }">Article List</router-link> |
-        <router-link @click.native="logout" to="#">Logout</router-link>
+      <span v-if="isLogin" class="px-2 pt-3" style="background-color:#87615e;border-radius: 1em;">
+        <router-link to="/popular" class="mx-3">인기 상영작</router-link> 
+        <router-link to="/nowplaying" class="mx-3">현재 상영작</router-link> 
+        <router-link :to="{ name: 'ArticleList' }" class="mx-3">커뮤니티</router-link> 
+        <router-link @click.native="logout" to="#" class="mx-3">로그아웃</router-link>
       </span>
       <span v-else>
-        <router-link to="/accounts/login">Login</router-link> |
-        <router-link to="/accounts/signup">signup</router-link> |
+        <router-link to="/accounts/login" class="mx-3">로그인</router-link> 
+        <router-link to="/accounts/signup" class="mx-3">회원가입</router-link> 
       </span>  
     </div>
     <router-view @login="isLogin = true"/>
@@ -41,24 +41,29 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Yeon Sung', cursive;
   text-align: center;
-  color: #2c3e50;
+  color: #4495e6;
 }
 
 #nav {
-  padding: 30px;
+  padding: 50px;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 2.5rem;
+}
+
+#nav a:hover{
+  text-decoration: underline;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #7c7c7c;
 }
 </style>

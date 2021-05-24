@@ -1,26 +1,29 @@
 <template>
-  <div>
-    <router-link :to="{ name: 'CreateArticle' }"><button class="btn btn-success">새 글 작성하기</button></router-link> 
+  <div class="container">
+    <div>
+      <span class="me-5" style="font-size:23px;font-family: 'Nanum Gothic Coding', monospace;">현재 상영작 리뷰 확인하기</span>
+      <router-link :to="{ name: 'CreateArticle' }"><button class="btn btn-success ms-5" style="font-family: 'Nanum Gothic Coding', monospace;font-size:1rem">새 글 작성하기</button></router-link> 
+      
+    </div>
     <hr>
-    <table class="table container">
+    <table class="table" style="font-size:20px; border-radius: 1em;background-color:#ddcfd5;">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">제목</th>
-          <th scope="col">별점</th>
-          <th scope="col">아이콘</th>
+          <th scope="col">번호</th>
+          <th scope="col">영화 제목</th>
+          <th scope="col">글 제목</th>
+          <th scope="col">☆☆☆☆☆</th>
         </tr>
       </thead>
       <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.id)">
         <tr>
-          <th scope="row">{{ article.id }}</th>
+          <th>{{ article.id }}</th>
           <th>{{ article.movietitle }}</th>
-          <td>{{ article.title }}</td>
-          <td>{{ article.rating }}</td>
+          <th>{{ article.title }}</th>
+          <th>{{ article.rating }}</th>
         </tr>
       </tbody>
     </table>
-
 
   </div>
 </template>
@@ -86,5 +89,9 @@ export default {
 </script>
 
 <style>
+th {
+  color: black;
+  font-family: 'Nanum Gothic Coding', monospace;
 
+}
 </style>

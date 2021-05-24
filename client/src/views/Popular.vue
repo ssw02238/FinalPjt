@@ -56,4 +56,13 @@ export default {
 
 <style>
 
+  * {
+    color: #ffffff;
+  }
+  #app {
+  background-color: rgb(20, 20, 20);
+
+  color: #ffffff;
+  min-height: 100vh;
+}
 </style>
