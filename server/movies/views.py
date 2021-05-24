@@ -11,7 +11,7 @@ from .serializers import ArticleListSerializer, ArticleSerializer, MovieCommentS
 from .models import Article, Movie
 
 @api_view(['GET'])
-def seeding(request):
+def seeding(request): 
     API_KEY = '80ced8591ed61ab4a22df20840478047'
     for pageNum in range(1, 10): 
         URL = f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=ko-KR&page={pageNum}'
@@ -65,16 +65,15 @@ def comments_create(request):
 @api_view(['GET', 'POST'])
 @authentication_classes([JSONWebTokenAuthentication])
 def article_list(request):
-    articles = get_list_or_404(Article)
+    articles = Article.objects.all().order_by('-rating')
     if request.method == 'GET':
-        # articles = Article.objects.all()
         serializer = ArticleListSerializer(articles, many=True)
         return Response(serializer.data)
     
     elif request.method == 'POST':
         serializer = ArticleListSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

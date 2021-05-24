@@ -8,7 +8,8 @@ class Article(models.Model):
     title = models.CharField(max_length=10)
     content = models.TextField()
     movietitle = models.CharField(max_length=50)
-    rating = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    movieId = models.IntegerField()
+    rating = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

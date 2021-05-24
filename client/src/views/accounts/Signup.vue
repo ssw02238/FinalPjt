@@ -44,8 +44,8 @@ export default {
         .then(res => {
           // 바로 로그인된 상태로 popular 페이지 나오게 
           console.log(res)
-          localStorage.setItem('jwt', res.data.token)
-          this.$emit('login')
+          // localStorage.setItem('jwt', res.data.token)
+          // this.$emit('login')
           this.$router.push({ name: 'Popular' })
         })
         .catch(err => {
