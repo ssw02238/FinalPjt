@@ -24,12 +24,6 @@ export const movieApi = {
     request.get(`movie/${id}`, {
       params: { append_to_response: "videos" },
     }),
-  search: (keyword) =>
-    request.get("search/movie", {
-      params: {
-        query: keyword,
-      },
-    }),
   movieSimilar: (id) =>
   request.get(`movie/${id}/similar`, {
     params: {

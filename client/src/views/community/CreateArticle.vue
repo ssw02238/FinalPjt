@@ -1,50 +1,29 @@
 <template>
-  
-  <div class="createArticle container" style="border: 1px solid black;">
-
-    <select v-model="movietitle">
-
-      <option disabled value="">Please select one</option>
+  <div class="createArticle container py-3" style="border-radius: 1em;background-color:#5f5446; border: 1px solid black;font-family: 'Gothic A1', sans-serif;">
+    <label for="movie-select" class="me-2 mt-3">Choose a Movie:</label>
+    <select v-model="movietitle" style="color:black; height:45px; width:70%">
+      <option disabled value="" style="color:black">Please select one</option>
       <option v-for="(movie, idx) in movies"
       :key="idx"
       :value="[movie.id, movie.title]"
+      style="color:black; width:70%;"
       >
       {{ movie.title }}
       </option>
     </select>
     <div class="mb-5">
       <span>제목: </span>
-      <input class="mt-5" type="text" v-model.trim="title" @keyup.enter="createArticle"> <br>
+      <input class="mt-5" type="text" v-model.trim="title" style="width:70%;"> <br>
     </div>
     <div class="mb-5">
       <span>내용: </span>
-      <input class="get_content" type="text" v-model.trim="content" @keyup.enter="createArticle"> <br>
+      <input type="text" class="get_content" v-model.trim="content" style="width:70%; height:300px"> <br>
     </div>
     <div class="mb-5">
       <span>별점: </span>
-      <input placeholder="숫자" type="number" min='0' max='5' v-model.trim="rating" @keyup.enter="createArticle"> <br> 
+      <input placeholder="5점 만점" type="number" min='0' max='5' v-model.trim="rating" @keyup.enter="createArticle" style="width:23%"> <br> 
     </div>
-    <button @click="createArticle" class="btn btn-danger mb-3">작성하기</button> 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        {{similars}}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+    <button @click="createArticle" class="btn btn-secondary mb-3" style="color:black; font-size:20px">작성하기</button> 
 </div>
 </template>
 
@@ -59,13 +38,11 @@ export default {
       title: null,
       content: null,
       rating: null,
-      movie_title: null, //[movie id, movie title]
+      movietitle: null,
       movies: [],
 
       selected: [],
-
       similars: [],
-      movietitle: null,
     }
   },
   methods: {
@@ -78,11 +55,10 @@ export default {
     },
     createArticle: function () {
       const ArticleItem = {
-        title: this.rating,
+        title: this.title,
         content: this.content,
         rating: this.rating,
         movietitle: this.movietitle[1],
-
       }
       if (ArticleItem.title) {
         axios({
@@ -93,7 +69,6 @@ export default {
         })
           .then((res) => {
             console.log(res)
-
             this.$router.push({ name: 'ArticleList', params: { id: this.movietitle[0] }})
 
           })
@@ -140,14 +115,10 @@ export default {
     width: 40%;
     height: 80px;
   }
-
-  .example-slide {
-  align-items: center;
-  background-color: #666;
-  color: #999;
-  display: flex;
-  font-size: 1.5rem;
-  justify-content: center;
-  min-height: 10rem;
- } 
+  input {
+    color:black;
+  }
+  .createArticle {
+    font-size: 1.8rem;
+  }
 </style>

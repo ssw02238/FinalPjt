@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <p>{{ title }}</p>
-    <p>{{ content }}</p>
-    <p>{{ rating }}</p>
+  <div class="container p-4 w-60" style="font-size:30px; border:solid #6c6367 1px; background-color:#483946">
+    <p style="font-family: 'Gothic A1', sans-serif;">글 제목: {{ title }} / 영화: {{ article.movietitle }} </p>
+    <p style="font-family: 'Gothic A1', sans-serif;">내용: {{ content }}</p>
+    <p style="font-family: 'Gothic A1', sans-serif;">별점: {{ rating }}</p>
   </div>
 </template>
 
@@ -61,6 +61,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200&display=swap');
 
 </style>
