@@ -59,6 +59,16 @@ export default {
       })
         .then(res => {
           localStorage.setItem('reviews', JSON.stringify(res.data.reviews))
+          this.userName = localStorage.getItem('username')
+          this.reviews = JSON.parse(localStorage.getItem('reviews'))
+          // goodMovie ID 담기
+          for (var cnt in this.reviews) {
+              if (this.reviews[cnt].rating >= 4) {
+                this.goodMovies.push(this.reviews[cnt].movieId)
+              } else {
+                continue
+              }
+            }
         })
     },
     // goodMovie 안에 Id를 기준으로 영화 추천 리스트 받기 
@@ -71,7 +81,6 @@ export default {
           // 랜덤 추천 영화 넣어주기 
           this.recommend_movie = _.sampleSize(this.recommendation, 5)
           console.log(this.recommend_movie)
-
         }
         catch (error) {
           console.log(error)
@@ -81,17 +90,6 @@ export default {
   mounted: function () {
     if (localStorage.getItem('jwt')) {
       this.getReviews()
-      this.userName = localStorage.getItem('username')
-      this.reviews = JSON.parse(localStorage.getItem('reviews'))
-
-      // goodMovie ID 담기
-      for (var cnt in this.reviews) {
-          if (this.reviews[cnt].rating >= 3) {
-            this.goodMovies.push(this.reviews[cnt].movieId)
-          } else {
-            continue
-          }
-        }
     } else {
       this.$router.push({name: 'Login'})
     }
