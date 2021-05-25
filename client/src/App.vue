@@ -22,6 +22,7 @@ export default {
   data: function () {
     return {
       isLogin: false,
+      a: '',
     }
   },
   methods: {
