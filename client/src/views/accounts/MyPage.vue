@@ -10,6 +10,8 @@
               <th scope="col">영화 제목</th>
               <th scope="col">글 제목</th>
               <th scope="col">☆☆☆☆☆</th>
+              <th scope="col">삭제</th>
+
             </tr>
           </thead>
           <tbody v-for="(review, idx) in reviews" :key="idx" @click="goDetail(review.movieId)">
@@ -18,12 +20,19 @@
               <th>{{review.movietitle}}</th>
               <th>{{review.title}}</th>
               <th>{{review.rating}}</th>
+              <th><button @click="deleteReview(review)">삭제</button></th>
             </tr>
           </tbody>
         </table>
       <hr>
       <button class="btn btn-warning my-3" style="font-size:30px" @click="getRecommend">추천 영화 확인!</button>
       <!-- recommendation -->
+      <div v-if="recommend_movie" class="d-flex container">
+          <div v-for="(movie, idx) in recommend_movie" :key="idx">
+            <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" class="m-2" alt="movie_poster" style="height:500px;">
+            <h3>{{ movie.title }} </h3>
+          </div>
+      </div>
     </div>
   </div>
 </template>
@@ -94,6 +103,20 @@ export default {
     goDetail(id) {
       this.$router.push({ name: 'MovieDetail',  params: {id: id }})
     },
+    deleteReview: function (review) {
+      axios({
+        method: 'delete',
+        url: `http://127.0.0.1:8000/movies/${review.id}/`,
+        headers: this.setToken()
+      })
+        .then((res) => {
+          console.log(res) // 삭제된거 실시간 렌더링 
+          this.$router.push({ name: 'MyPage'})
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
   mounted: async function () {
     if (localStorage.getItem('jwt')) {
@@ -106,6 +129,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+th {
+  color: black;
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+th button {
+  color: white;
+  background: #5a6160;
+}
 </style>
-

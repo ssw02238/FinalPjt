@@ -6,7 +6,7 @@
     ></div>
     <div class="movie-content d-flex">
       <div style="">
-        <router-link to="/nowplaying"><button class="btn btn-secondary mb-2"> 뒤로 가기 </button></router-link>
+        <router-link to="/popular"><button class="btn btn-secondary mb-2"> Home </button></router-link>
          <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+movieDetail.poster_path" class="m-2" alt="movie_poster" style="height:500px;">
       </div>
       <div class="ml-5 w-75 ms-3">
@@ -91,8 +91,8 @@ export default {
     this.movieDetail = data
   },
   methods: {
-    async image(img) {
-      console.log(img)
+     image(img) {
+      console.log();
       return `https://image.tmdb.org/t/p/original/${img}`;
     },
     youtube(src) {

@@ -13,7 +13,6 @@
           <th scope="col">영화 제목</th>
           <th scope="col">글 제목</th>
           <th scope="col">☆☆☆☆☆</th>
-          <th scope="col">수정 / 삭제</th>
         </tr>
       </thead>
       <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.movieId)">
@@ -22,8 +21,6 @@
           <th>{{ article.movietitle }}</th>
           <th>{{ article.title }}</th>
           <th>{{ article.rating }}</th>
-          <th><button @click="deleteReview(article)">삭제</button></th>
-
         </tr>
       </tbody>
     </table>
@@ -70,35 +67,7 @@ export default {
       this.$router.push({ name: 'MovieDetail',  params: {id: id }})
     },
 
-    deleteReview: function (article) {
-      axios({
-        method: 'delete',
-        url: `http://127.0.0.1:8000/movies/${article.id}/`,
-        headers: this.setToken()
-      })
-        .then((res) => {
-          console.log(res)
-          this.getArticles() // 삭제된거 실시간 렌더링 
-          this.$router.push({ name: 'ArticleList'})
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
-    // updateArticleStatus: function (article) {
-    // const articleItem = {
-    //   ...article,
-    // }
-    //   axios({
-    //     method: 'put',
-    //     url: `http://127.0.0.1:8000/movies/${article.id}/`,
-    //     data: articleItem,
-    //     headers: this.setToken()
-    //   })
-    //     .then((res) => {
-    //       console.log(res)
-    //     })
-    //   },
+
   },
   created: function () {
     if (localStorage.getItem('jwt')) {
