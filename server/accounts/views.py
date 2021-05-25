@@ -1,3 +1,4 @@
+
 from django.shortcuts import get_list_or_404, get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -7,10 +8,11 @@ from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.decorators import authentication_classes, permission_classes
+from movies.models import Article
 # 절대 경로 참조 
-import sys
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from . import d
+# import sys
+# sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+# from . import d
 
 @api_view(['POST'])
 def signup(request):
@@ -40,11 +42,10 @@ def signup(request):
 @permission_classes([IsAuthenticated])
 def profile(request):
     if request.method == 'GET':
-        reviews = get_list_or_404(Article, user_id=request.user.id)
+        # reviews = Article.objects.filter(user_id=request.user.id)
         person = {
             'user_id': request.user.id,
             'username': request.user.username,
-            'reviews': reviews
+            # 'reviews': reviews
         }
-
         return Response(person)
