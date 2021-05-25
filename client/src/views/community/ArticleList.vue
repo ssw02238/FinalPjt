@@ -37,7 +37,7 @@ export default {
   data: function () {
     return {
       articles: [],
-      id: null,
+      // id: null,
 
     }
   },
@@ -78,11 +78,11 @@ export default {
     }
   },
 
-  async mounted() {
-    const { id } = this.$route.params
-    this.id = id
-    console.log(this.id)
-  },
+  // async mounted() {
+  //   const { id } = this.$route.params
+  //   this.id = id
+  //   console.log(this.id)
+  // },
 
 }
 </script>
