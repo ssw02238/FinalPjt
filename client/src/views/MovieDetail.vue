@@ -71,7 +71,6 @@ export default {
   data() {
     return {
       movieDetail: {},
-      similars: [],
       comments: [],
       articles: '',
       id: '',
@@ -118,15 +117,6 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-    },
-    async getSimilar() {
-      try{
-        const {data} = await movieApi.movieSimilar(this.selected)
-        this.similars = data.results
-      }
-      catch (error) {
-        console.log(error)
-      }
     },
   },
 }
