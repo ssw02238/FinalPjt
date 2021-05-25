@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div>
+    ad
+  </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'MyPage',
   data: function () {
@@ -21,20 +21,7 @@ export default {
     
       return config 
     },
-    getProfile: function () {
-      axios({
-        method: 'get',
-        url: 'http://127.0.0.1:8000/accounts/profile',
-        headers: this.setToken()
-      })
-        .then((res) => {
-          console.log(res)
-          this.person = res.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
+    
   },
   // async mounted() {
   //   const { id } = this.$route.params
@@ -42,7 +29,7 @@ export default {
   // },
   created: function () {
     if (localStorage.getItem('jwt')) {
-      this.getProfile()
+      console.log()
     } else {
       this.$router.push({name: 'Login'})
     }

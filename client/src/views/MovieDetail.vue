@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-detail container p-3">
+  <div class="movie-detail p-3" style="margin-left:5rem; margin-right:5rem;">
     <div
       class="movie-detail-image" style="margin-top:130px"
       :style="{ backgroundImage: `url(${image(movieDetail.backdrop_path)})`}"

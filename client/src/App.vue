@@ -5,7 +5,7 @@
         <router-link to="/popular" class="mx-3">인기 상영작</router-link> 
         <router-link to="/nowplaying" class="mx-3">현재 상영작</router-link> 
         <router-link :to="{ name: 'ArticleList' }" class="mx-3">커뮤니티</router-link> 
-        <!-- <router-link :to="{ name: 'MyPage:id' }" class="mx-3">마이페이지</router-link>  -->
+        <router-link :to="{ name: 'MyPage', params: {id: userId }}" class="mx-3">마이페이지</router-link> 
         <router-link @click.native="logout" to="#" class="mx-3">로그아웃</router-link>
       </span>
       <span v-else>
@@ -23,6 +23,7 @@ export default {
   data: function () {
     return {
       isLogin: false,
+      userId: null,
     }
   },
   methods: {
@@ -30,6 +31,7 @@ export default {
       this.isLogin = false
       localStorage.removeItem('jwt')
       localStorage.removeItem('username')
+      localStorage.removeItem('user_id')
       this.$router.push({ name: 'Login' })
     }
   },
@@ -37,6 +39,9 @@ export default {
     const token = localStorage.getItem('jwt')
     if (token) {
       this.isLogin = true
+      console.log(localStorage)
+      this.userId = localStorage.getItem('user_id')
+      console.log(this.userId)
     }
   }
 }
@@ -48,6 +53,7 @@ export default {
   font-family: 'Yeon Sung', cursive;
   text-align: center;
   color: #4495e6;
+  min-width: 1250px;
 }
 
 #nav {
@@ -68,4 +74,5 @@ export default {
 #nav a.router-link-exact-active {
   color: #7c7c7c;
 }
+
 </style>
