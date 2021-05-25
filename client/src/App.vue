@@ -5,7 +5,7 @@
         <router-link to="/popular" class="mx-3">인기 상영작</router-link> 
         <router-link to="/nowplaying" class="mx-3">현재 상영작</router-link> 
         <router-link :to="{ name: 'ArticleList' }" class="mx-3">커뮤니티</router-link> 
-        <router-link :to="{ name: 'MyPage:id' }" class="mx-3">마이페이지</router-link> 
+        <!-- <router-link :to="{ name: 'MyPage:id' }" class="mx-3">마이페이지</router-link>  -->
         <router-link @click.native="logout" to="#" class="mx-3">로그아웃</router-link>
       </span>
       <span v-else>
@@ -29,6 +29,7 @@ export default {
     logout: function () {
       this.isLogin = false
       localStorage.removeItem('jwt')
+      localStorage.removeItem('username')
       this.$router.push({ name: 'Login' })
     }
   },

@@ -6,7 +6,7 @@
 import axios from 'axios'
 
 export default {
-  name: MyPage,
+  name: 'MyPage',
   data: function () {
     return {
       person: null,
@@ -18,6 +18,7 @@ export default {
       const config = {
         Authorization: `JWT ${jwtToken}`
       }
+    
       return config 
     },
     getProfile: function () {
@@ -28,7 +29,7 @@ export default {
       })
         .then((res) => {
           console.log(res)
-          this.person = res
+          this.person = res.data
         })
         .catch((err) => {
           console.log(err)
