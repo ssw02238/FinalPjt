@@ -6,6 +6,7 @@ from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.decorators import authentication_classes, permission_classes
 
 
 @api_view(['POST'])
