@@ -4,8 +4,8 @@
       <span v-if="isLogin" class="px-2 pt-3" style="background-color:#87615e;border-radius: 1em;">
         <router-link to="/popular" class="mx-3">인기 상영작</router-link> 
         <router-link to="/nowplaying" class="mx-3">현재 상영작</router-link> 
-        <router-link :to="{ name: 'ArticleList' }" class="mx-3">커뮤니티</router-link> 
-        <router-link :to="{ name: 'MyPage', params: {id: userId }}" class="mx-3">마이페이지</router-link> 
+        <router-link :to="{ name: 'ArticleList' }" class="mx-3">커뮤니티</router-link>
+        <router-link :to="{ name: 'MyPage'}" class="mx-3">마이페이지</router-link> 
         <router-link @click.native="logout" to="#" class="mx-3">로그아웃</router-link>
       </span>
       <span v-else>
@@ -13,7 +13,7 @@
         <router-link to="/accounts/signup" class="mx-3">회원가입</router-link> 
       </span>  
     </div>
-    <router-view @login="isLogin = true"/>
+    <router-view @login="isLogin=true"/>
   </div>
 </template>
 
@@ -32,16 +32,34 @@ export default {
       localStorage.removeItem('jwt')
       localStorage.removeItem('username')
       localStorage.removeItem('user_id')
-      this.$router.push({ name: 'Login' })
-    }
-  },
-  created: function () {
-    const token = localStorage.getItem('jwt')
-    if (token) {
-      this.isLogin = true
+      // localStorage.removeItem('reviews')
+      localStorage.removeItem('vuex')
       console.log(localStorage)
-      this.userId = localStorage.getItem('user_id')
-      console.log(this.userId)
+      this.$router.push({ name: 'Login' })
+    },
+    // afterLogin: function () {
+    //   const token = localStorage.getItem('jwt')
+    //   if (token) {
+    //     this.isLogin = true
+    //     console.log(localStorage)
+    //     this.userId = localStorage.getItem('user_id')
+    //     console.log(this.userId)
+    //   }
+    // }
+  },
+  // try-catch로 바꾼 것 
+  async mounted() {
+    try {
+      const token = localStorage.getItem('jwt')
+      if (token) {
+        this.isLogin = true
+        console.log(localStorage)
+        this.userId = localStorage.getItem('user_id')
+        console.log(this.userId)
+      }
+    }
+    catch (error) {
+      console.log(error)
     }
   }
 }

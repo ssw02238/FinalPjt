@@ -66,7 +66,7 @@ export default {
         })
           .then((res) => {
             console.log(res)
-            this.$router.push({ name: 'ArticleList', params: { id: this.movietitle[0] }})
+            this.$router.push({ name: 'ArticleList'})
 
           })
           .catch((err) => {

@@ -1,15 +1,26 @@
 <template>
-  <div>
-    ad
+  <div class="container">
+    <div>
+      <span style="font-size:60px"> "{{userName}}" </span> 
+      <span style="font-size:45px"> 님의 My page </span>
+      <div v-for="(review, idx) in reviews" :key="idx">
+        {{review.movietitle}}
+        {{review.title}}
+        {{review.rating}}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'MyPage',
   data: function () {
     return {
-      person: null,
+      userName: null,
+      reviews: null,
     }
   },
   methods: {
@@ -21,15 +32,24 @@ export default {
     
       return config 
     },
-    
+    getReviews: function () {
+      axios({
+            method: 'get',
+            url: 'http://127.0.0.1:8000/accounts/profile/',
+            headers: this.setToken()
+          })
+            .then(res => {
+              console.log(res.data.reviews)
+              localStorage.setItem('reviews', JSON.stringify(res.data.reviews))
+              console.log(localStorage)
+            })
+    }
   },
-  // async mounted() {
-  //   const { id } = this.$route.params
-  //   this.id = id
-  // },
-  created: function () {
+  mounted: function () {
     if (localStorage.getItem('jwt')) {
-      console.log()
+      this.getReviews()
+      this.userName = localStorage.getItem('username')
+      this.reviews = JSON.parse(localStorage.getItem('reviews'))
     } else {
       this.$router.push({name: 'Login'})
     }
@@ -38,5 +58,4 @@ export default {
 </script>
 
 <style>
-
 </style>

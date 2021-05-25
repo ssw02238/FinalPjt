@@ -16,8 +16,6 @@
 <script>
 import axios from 'axios'
 
-// const SERVER_URL = process.env.VUE_APP_SERVER_URL
-
 export default {
   name: 'Login',
   data: function () {
@@ -25,7 +23,8 @@ export default {
       credentials: {
         username: null,
         password: null,
-      }
+      },
+      reviews: null,
     }
   },
   methods: {
@@ -34,7 +33,6 @@ export default {
       const config = {
         Authorization: `JWT ${jwtToken}`
       }
-    
       return config 
     },
     login: function () {
@@ -60,6 +58,9 @@ export default {
               console.log(res.data)
               localStorage.setItem('username', res.data.username)
               localStorage.setItem('user_id', res.data.user_id)
+              console.log(res.data.reviews)
+              // localStorage.setItem('reviews',  JSON.stringify(res.data.reviews))
+              
               console.log(localStorage)
             })
         })

@@ -11,7 +11,7 @@
       </div>
       <div class="ml-5 w-75 ms-3">
         <span class="movie-title me-2" style="font-size:50px">{{ movieDetail.title }}</span>
-        <span style="font-size:25px">({{ movieDetail.release_date.split("-")[0] }})</span>   
+        <span style="font-size:25px">({{ movieDetail.release_date }})</span>   
         <div class="movie-information-wrapper mt-4 d-flex align-items-center">
           <div class="ml-2 d-flex">
             <div class="me-3"> 개요: </div>
@@ -92,8 +92,8 @@ export default {
     this.movieDetail = data
   },
   methods: {
-    image(img) {
-      console.log();
+    async image(img) {
+      console.log(img)
       return `https://image.tmdb.org/t/p/original/${img}`;
     },
     youtube(src) {
@@ -113,7 +113,6 @@ export default {
         headers: this.setToken()
       })
         .then((res) => {
-          console.log(res.data)
           this.articles = res.data
         })
         .catch((err) => {
