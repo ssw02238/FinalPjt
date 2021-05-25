@@ -29,6 +29,14 @@ export default {
     }
   },
   methods: {
+    setToken: function () {
+      const jwtToken = localStorage.getItem('jwt')
+      const config = {
+        Authorization: `JWT ${jwtToken}`
+      }
+    
+      return config 
+    },
     login: function () {
       axios({
         method: 'post',
@@ -40,6 +48,19 @@ export default {
           localStorage.setItem('jwt', res.data.token)
           this.$emit('login')
           this.$router.push({ name: 'Popular' })
+        })
+        .then(res => {
+          console.log(res)
+          axios({
+            method: 'get',
+            url: 'http://127.0.0.1:8000/accounts/profile/',
+            headers: this.setToken()
+          })
+            .then(res => {
+              console.log(res.data)
+              localStorage.setItem('username', res.data.username)
+              console.log(localStorage)
+            })
         })
         .catch(err => {
           this.$router.push({ name: 'Signup' })

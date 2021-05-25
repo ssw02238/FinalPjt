@@ -35,7 +35,10 @@ def signup(request):
 @api_view(['GET'])
 @authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
-def profile(request, user_id):
+def profile(request):
     if request.method == 'GET':
-        person = get_object_or_404(get_user_model(), pk=user_id)
+        person = {
+            'user_id': request.user.id,
+            'username': request.user.username,
+        }
         return Response(person)
