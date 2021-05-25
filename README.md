@@ -57,3 +57,16 @@
 - community 게시판 내 ArticleDetail 생성 
   - ArticleList에서 id를 params 로 받아 특정 article data 받기 
 
+
+
+## 5/24
+
+- 세부 디자인 수정 
+  - notion 참고 
+- 추천 알고리즘 재기획 
+
+
+
+## 5/25
+
+- 추천 알고리즘 구현 
