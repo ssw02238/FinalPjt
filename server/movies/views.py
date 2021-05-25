@@ -51,43 +51,14 @@ def article_list(request):
         # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'DELETE', 'PUT'])
+@api_view([ 'DELETE'])
 @authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
-def article_detail(request, article_pk):
-    article = get_object_or_404(Article, pk=article_pk)
-    if request.method == 'GET':
-        serializer = ArticleSerializer(article)
-        return Response(serializer.data)
-    
-    elif request.method == 'DELETE':
-        article.delete()
-        data = {
-            'delete': f'데이터 {article_pk}번 글이 삭제되었습니다.',
-        }
-        return Response(data, status=status.HTTP_204_NO_CONTENT)
-
-    elif request.method == 'PUT':
-        serializer = ArticleSerializer(article, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
-
-
-@api_view(['PUT', 'DELETE'])
-@authentication_classes([JSONWebTokenAuthentication])
-@permission_classes([IsAuthenticated])
-def article_update_delete(request, article_pk):
+def article_delete(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
 
     if not request.user.articles.filter(pk=article_pk).exists():
         return Response({'detail': '권한이 없습니다.'}, status=status.HTTP_403_FORBIDDEN)
-
-    if request.method == 'PUT':
-        serializer = ArticleSerializer(article, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
 
     elif request.method == 'DELETE':
         article.delete()

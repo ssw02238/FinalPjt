@@ -5,8 +5,8 @@
       :style="{ backgroundImage: `url(${image(movieDetail.backdrop_path)})`}"
     ></div>
     <div class="movie-content d-flex">
+      <router-link to="/popular"><button class="btn btn-secondary mt-2" style="font-size:25px"> Home </button></router-link>
       <div style="">
-        <router-link to="/nowplaying"><button class="btn btn-secondary mb-2"> 뒤로 가기 </button></router-link>
          <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+movieDetail.poster_path" class="m-2" alt="movie_poster" style="height:500px;">
       </div>
       <div class="ml-5 w-75 ms-3">
@@ -31,8 +31,8 @@
           <h5>{{ movieDetail.overview }}</h5>
           
         </div>
-        <div v-else class="mt-3">
-          <h5>줄거리가 등록되지 않았습니다!</h5>
+        <div v-else class="mt-5">
+          <h5 style="margin-top:200px; font-size: 30px">줄거리가 등록되지 않았습니다!</h5>
         </div>
         <div v-if="movieDetail.videos && movieDetail.videos.results">
           <iframe
@@ -44,8 +44,8 @@
             :src="youtube(movieDetail.videos.results[0].key)"
           >
           </iframe>
-          <div v-else class="mt-4">
-            <p>해당 영상이 존재하지 않습니다.</p>
+          <div v-else class="mt-5">
+            <p style="margin-top:300px; font-size: 30px">해당 영상이 존재하지 않습니다.</p>
           </div>
           <div v-for="(article, idx) in articles" :key="idx" class="bg-light">
             <div v-if="article.movieId === id">
@@ -91,8 +91,8 @@ export default {
     this.movieDetail = data
   },
   methods: {
-    async image(img) {
-      console.log(img)
+    image(img) {
+      // console.log( `https://image.tmdb.org/t/p/original/${img}`)
       return `https://image.tmdb.org/t/p/original/${img}`;
     },
     youtube(src) {
