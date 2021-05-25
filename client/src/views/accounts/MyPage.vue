@@ -3,23 +3,27 @@
     <div>
       <span style="font-size:60px"> "{{userName}}" </span> 
       <span style="font-size:45px"> 님의 My page </span>
-      <div v-for="(review, idx) in reviews" :key="idx" style="font-size:45px">
-        {{ idx+1 }}.
-        {{review.movietitle}}
-        {{review.title}}
-        {{review.rating}}
-        {{review.movieId}}
-      </div>
+        <table class="table" style="font-size:20px; border-radius: 1em;background-color:#ddcfd5;">
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">영화 제목</th>
+              <th scope="col">글 제목</th>
+              <th scope="col">☆☆☆☆☆</th>
+            </tr>
+          </thead>
+          <tbody v-for="(review, idx) in reviews" :key="idx" @click="goDetail(review.movieId)">
+            <tr>
+              <th>{{ idx+1 }}</th>
+              <th>{{review.movietitle}}</th>
+              <th>{{review.title}}</th>
+              <th>{{review.rating}}</th>
+            </tr>
+          </tbody>
+        </table>
       <hr>
       <button class="btn btn-warning my-3" style="font-size:30px" @click="getRecommend">추천 영화 확인!</button>
       <!-- recommendation -->
-        <div v-if="recommend_movie" class="d-flex container">
-          <div v-for="(movie, idx) in recommend_movie" :key="idx">
-            
-            <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" class="m-2" alt="movie_poster" style="height:500px;">
-            <h3>{{ movie.title }} </h3>
-          </div>
-      </div>
     </div>
   </div>
 </template>
@@ -59,7 +63,17 @@ export default {
       })
         .then(res => {
           localStorage.setItem('reviews', JSON.stringify(res.data.reviews))
+          this.userName = localStorage.getItem('username')
+          this.reviews = JSON.parse(localStorage.getItem('reviews'))
+          for (var cnt in this.reviews) {
+            if (this.reviews[cnt].rating >= 3) {
+              this.goodMovies.push(this.reviews[cnt].movieId)
+          } else {
+            continue
+          }
+        }
         })
+        
     },
     // goodMovie 안에 Id를 기준으로 영화 추천 리스트 받기 
     async getRecommend () {
@@ -71,27 +85,20 @@ export default {
           // 랜덤 추천 영화 넣어주기 
           this.recommend_movie = _.sampleSize(this.recommendation, 5)
           console.log(this.recommend_movie)
-
         }
         catch (error) {
           console.log(error)
         }
     },
+    goDetail(id) {
+      this.$router.push({ name: 'MovieDetail',  params: {id: id }})
+    },
   },
-  mounted: function () {
+  mounted: async function () {
     if (localStorage.getItem('jwt')) {
       this.getReviews()
-      this.userName = localStorage.getItem('username')
-      this.reviews = JSON.parse(localStorage.getItem('reviews'))
-
       // goodMovie ID 담기
-      for (var cnt in this.reviews) {
-          if (this.reviews[cnt].rating >= 3) {
-            this.goodMovies.push(this.reviews[cnt].movieId)
-          } else {
-            continue
-          }
-        }
+
     } else {
       this.$router.push({name: 'Login'})
     }

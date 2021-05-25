@@ -32,6 +32,7 @@ export default {
       localStorage.removeItem('jwt')
       localStorage.removeItem('username')
       localStorage.removeItem('user_id')
+      localStorage.removeItem('reviews')
       // localStorage.removeItem('reviews')
       localStorage.removeItem('vuex')
       // console.log(localStorage)
