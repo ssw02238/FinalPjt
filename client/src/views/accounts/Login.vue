@@ -59,6 +59,7 @@ export default {
             .then(res => {
               console.log(res.data)
               localStorage.setItem('username', res.data.username)
+              localStorage.setItem('user_id', res.data.user_id)
               console.log(localStorage)
             })
         })

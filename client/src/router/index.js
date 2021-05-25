@@ -57,7 +57,7 @@ const routes = [
 
   },
   {
-    path: '/accounts/MyPage',
+    path: '/accounts/MyPage:id',
     name: 'MyPage',
     component: MyPage,
 
