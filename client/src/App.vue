@@ -33,7 +33,6 @@ export default {
       localStorage.removeItem('username')
       localStorage.removeItem('user_id')
       localStorage.removeItem('reviews')
-      // localStorage.removeItem('reviews')
       localStorage.removeItem('vuex')
       // console.log(localStorage)
       this.$router.push({ name: 'Login' })

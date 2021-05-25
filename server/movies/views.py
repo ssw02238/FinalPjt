@@ -34,33 +34,6 @@ def movie_list(request):
         return Response(serializer.data)
 
 
-# @api_view(['GET', 'POST'])
-# @authentication_classes([JSONWebTokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def comments_create(request):
-#     if request.user.is_authenticated:
-#         if request.method == 'GET':
-#             serializer = MovieCommentSerializer(request.user.movieComments, many=True)
-#             return Response(serializer.data)
-#         elif request.method == 'POST':
-#             serializer = MovieCommentSerializer(data=request.data)
-#             if serializer.is_valid(raise_exception=True):
-#                 serializer.save(user=request.user)
-#                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
-# @api_view(['DELETE'])
-# @authentication_classes([JSONWebTokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def comments_delete(request, comment_pk):
-#     comment = get_object_or_404(Comment, pk=comment_pk)
-
-#     if not request.user.comments.filter(pk=comment_pk).exists():
-#         return Response({'#':'댓글 삭제 권한이 없습니다!'}, status=status.HTTP_403_FORBIDDEN)
-#     if request.method == 'DELETE':
-#         comment.delete()
-#         return Response({'id':'삭제되었습니다'}, status=status.HTTP_204_NO_CONTENT)
-
 
 @api_view(['GET', 'POST'])
 @authentication_classes([JSONWebTokenAuthentication])
@@ -99,3 +72,23 @@ def article_detail(request, article_pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
+
+@api_view(['PUT', 'DELETE'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def article_update_delete(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+
+    if not request.user.articles.filter(pk=article_pk).exists():
+        return Response({'detail': '권한이 없습니다.'}, status=status.HTTP_403_FORBIDDEN)
+
+    if request.method == 'PUT':
+        serializer = ArticleSerializer(article, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+    elif request.method == 'DELETE':
+        article.delete()
+        return Response({ 'id': article_pk }, status=status.HTTP_204_NO_CONTENT)

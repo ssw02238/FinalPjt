@@ -65,13 +65,14 @@ export default {
           localStorage.setItem('reviews', JSON.stringify(res.data.reviews))
           this.userName = localStorage.getItem('username')
           this.reviews = JSON.parse(localStorage.getItem('reviews'))
+          // goodMovie ID 담기
           for (var cnt in this.reviews) {
-            if (this.reviews[cnt].rating >= 3) {
-              this.goodMovies.push(this.reviews[cnt].movieId)
-          } else {
-            continue
-          }
-        }
+              if (this.reviews[cnt].rating >= 4) {
+                this.goodMovies.push(this.reviews[cnt].movieId)
+              } else {
+                continue
+              }
+            }
         })
         
     },
@@ -97,7 +98,6 @@ export default {
   mounted: async function () {
     if (localStorage.getItem('jwt')) {
       this.getReviews()
-      // goodMovie ID 담기
 
     } else {
       this.$router.push({name: 'Login'})
