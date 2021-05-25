@@ -55,6 +55,12 @@ const routes = [
     component: ArticleDetail,
 
   },
+  {
+    path: '/accounts/MyPage:id',
+    name: 'MyPage',
+    component: MyPage,
+
+  },
 ]
 
 const router = new VueRouter({

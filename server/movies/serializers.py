@@ -1,6 +1,6 @@
 from django.db import models
 from rest_framework import serializers
-from .models import Article, MovieComment, Movie
+from .models import Article, Movie
 
 
 class ArticleListSerializer(serializers.ModelSerializer):
@@ -10,11 +10,11 @@ class ArticleListSerializer(serializers.ModelSerializer):
         fields = ('id','title','content','rating', 'movietitle', 'movieId')
 
 
-class MovieCommentSerializer(serializers.ModelSerializer):
+# class MovieCommentSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = MovieComment
-        fields = ('id', 'content','rating',)
+#     class Meta:
+#         model = MovieComment
+#         fields = ('id', 'content','rating',)
 
 
 class ArticleSerializer(serializers.ModelSerializer):
