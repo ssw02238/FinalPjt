@@ -37,15 +37,6 @@ export default {
       console.log(localStorage)
       this.$router.push({ name: 'Login' })
     },
-    // afterLogin: function () {
-    //   const token = localStorage.getItem('jwt')
-    //   if (token) {
-    //     this.isLogin = true
-    //     console.log(localStorage)
-    //     this.userId = localStorage.getItem('user_id')
-    //     console.log(this.userId)
-    //   }
-    // }
   },
   // try-catch로 바꾼 것 
   async mounted() {
