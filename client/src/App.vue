@@ -67,6 +67,7 @@ export default {
 
 #nav {
   padding: 50px;
+  z-index: 999;
 }
 
 #nav a {

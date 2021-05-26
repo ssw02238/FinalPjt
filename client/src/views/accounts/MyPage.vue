@@ -18,7 +18,12 @@
               <th>{{ idx+1 }}</th>
               <th>{{review.movietitle}}</th>
               <th>{{review.title}}</th>
-              <th>{{review.rating}}</th>
+              <th v-if="review.rating === 5">★★★★★</th>
+              <th v-else-if="4 <= review.rating">☆★★★★</th>
+              <th v-else-if="3 <= review.rating">☆☆★★★</th>
+              <th v-else-if="2 <= review.rating">☆☆☆★★</th>
+              <th v-else-if="1 <= review.rating">☆☆☆☆★</th>
+              <th v-else></th>
               <th><button @click="deleteReview(review)">X</button></th>
             </tr>
           </tbody>

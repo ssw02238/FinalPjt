@@ -12,7 +12,7 @@
           <th scope="col">Rank</th>
           <th scope="col">영화 제목</th>
           <th scope="col">글 제목</th>
-          <th scope="col">☆☆☆☆☆</th>
+          <th scope="col">☆</th>
         </tr>
       </thead>
       <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.movieId)">
@@ -20,7 +20,13 @@
           <th>{{ idx+1 }}</th>
           <th>{{ article.movietitle }}</th>
           <th>{{ article.title }}</th>
-          <th>{{ article.rating }}</th>
+          <th v-if="article.rating === 5">★★★★★</th>
+          <th v-else-if="4 <= article.rating">☆★★★★</th>
+          <th v-else-if="3 <= article.rating">☆☆★★★</th>
+          <th v-else-if="2 <= article.rating">☆☆☆★★</th>
+          <th v-else-if="1 <= article.rating">☆☆☆☆★</th>
+          <th v-else></th>
+
         </tr>
       </tbody>
     </table>
@@ -56,6 +62,7 @@ export default {
       })
         .then((res) => {
           this.articles = res.data
+          console.log(this.articles[0])
         })
         .catch((err) => {
           console.log(err)
@@ -78,6 +85,7 @@ export default {
 </script>
 
 <style scoped>
+
 th {
   color: black;
   font-family: 'Nanum Gothic Coding', monospace;
