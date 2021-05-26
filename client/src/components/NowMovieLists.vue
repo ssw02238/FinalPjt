@@ -3,7 +3,7 @@
   <div class="card my-2" style="background-color:black;">
     <div class="card-imgTitle" @click="goDetail(now_movie.id)" v-if="now_movie" title="상세정보 확인을 위해 클릭해보세요!">
       <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+now_movie.poster_path" class="img-fluid" alt="movie_poster" style="height: 400px">
-      <div class="card-body">
+      <div class="card-body pt-4">
         <h5 class="card-title"><strong>☆ {{ now_movie.vote_average }}</strong></h5>
         <h6 class="mt-4" style="font-size:20px">{{ now_movie.title }}</h6>
       </div>

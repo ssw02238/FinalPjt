@@ -9,10 +9,12 @@
          <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+movieDetail.poster_path" class="m-2" alt="movie_poster" style="height:500px;">
       </div>
       <div class="ml-5 w-75 ms-3">
-        <span class="movie-title me-2" style="font-size:50px">{{ movieDetail.title }}</span>
-        <span style="font-size:25px">({{ date }})</span>   
+        <div align="left">
+          <span class="movie-title me-2" style="font-size:50px">{{ movieDetail.title }}</span>
+          <span style="font-size:25px">({{ date }})</span>
+        </div>   
         <div class="movie-information-wrapper mt-4 d-flex align-items-center">
-          <div class="ml-2 d-flex">
+          <div class="ml-2  d-flex">
             <div class="me-3"> 개요: </div>
             <div
               class="genres me-2"
@@ -26,33 +28,33 @@
         <div>러닝타임: {{ movieDetail.runtime }} 분 / </div>
         <div class="ms-2">★: {{movieDetail.vote_average}}</div>
         </div>
-        <div v-if="movieDetail.overview" class="mt-3" style="max-width:60rem;">
+        <div v-if="movieDetail.overview" class="mt-3" style="max-width:60rem;" align="left">
           <h5>{{ movieDetail.overview }}</h5>
         
         </div>
         <div v-else class="mt-5">
-          <h5 style="margin-top:200px; font-size: 30px">줄거리가 등록되지 않았습니다!</h5>
+          <h5 style="margin-top:150px; font-size: 30px">줄거리가 등록되지 않았습니다!</h5>
         </div>
         <div v-if="movieDetail.videos && movieDetail.videos.results">
           <iframe
           v-if="movieDetail.videos.results[0]"
-            class="m-4"
             :key="movieDetail.videos.results[0].key"
             width="640"
             height="360"
             :src="youtube(movieDetail.videos.results[0].key)"
+            align="left"
           >
           </iframe>
           <div v-else class="mt-5">
-            <p style="margin-top:300px; font-size: 30px">해당 영상이 존재하지 않습니다.</p>
+            <p style="margin-top:100px; font-size: 30px">예고편이 존재하지 않습니다.</p><hr style="width:70%; margin-start:130px">
           </div>
-          <div class="comments mt-3 px-5" style="width:640" >
-            <p class="p-2" style="font-size:32px; color:white;">{{choose}}</p>
+          <div class="comments m-5 px-5" style="width:640">
+            <p class="p-2" style="font-size:36px; color:white;">{{choose}}</p>
             <div v-for="(article, idx) in articles" :key="idx">
               <div v-if="article.movieId === id">
                 <ul>
                   <ol style="color:white; font-size: 20px">
-                   {{ article.content}} / ★ {{ article.rating }} 
+                   {{ article.content}} / ★ {{ article.rating }}
                   </ol>
                 </ul>
               </div>
@@ -159,7 +161,7 @@ export default {
 
 .movie-detail {
   position: relative;
-  font-family: 'Nanum Gothic Coding', monospace;
+  font-family: 'Noto Sans KR', sans-serif;
   min-width: 1250px;
 
 }

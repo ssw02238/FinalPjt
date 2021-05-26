@@ -3,7 +3,6 @@
 
     <div id="nav" style="min-width:1250px">
       <span v-if="isLogin" class="p-3">
-
         <router-link to="/popular" class="mx-3">인기 상영작</router-link> 
         <router-link to="/nowplaying" class="mx-3">현재 상영작</router-link> 
         <router-link :to="{ name: 'ArticleList' }" class="mx-3">한줄평</router-link>
@@ -77,7 +76,7 @@ export default {
 }
 
 #nav a:hover{
-  text-decoration: underline;
+  color: #967f7f;
 }
 
 #nav a.router-link-exact-active {
