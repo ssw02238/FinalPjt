@@ -5,13 +5,12 @@
       :style="{ backgroundImage: `url(${image(movieDetail.backdrop_path)})`}"
     ></div>
     <div class="movie-content d-flex">
-      <router-link to="/popular"><button class="btn btn-secondary mt-2" style="font-size:25px"> Home </button></router-link>
       <div style="">
          <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+movieDetail.poster_path" class="m-2" alt="movie_poster" style="height:500px;">
       </div>
       <div class="ml-5 w-75 ms-3">
         <span class="movie-title me-2" style="font-size:50px">{{ movieDetail.title }}</span>
-        <span style="font-size:25px">({{ movieDetail.release_date }})</span>   
+        <span style="font-size:25px">({{ date }})</span>   
         <div class="movie-information-wrapper mt-4 d-flex align-items-center">
           <div class="ml-2 d-flex">
             <div class="me-3"> 개요: </div>
@@ -76,6 +75,7 @@ export default {
       comments: [],
       articles: '',
       id: '',
+      date: null,
       weather: [0, 0, 0],
       choose: '',
     }
@@ -94,6 +94,7 @@ export default {
     this.id = id
     const { data } = await movieApi.movieDetail(id)
     this.movieDetail = data
+    this.date = this.movieDetail.release_date.split('-')[0]
   },
   methods: {
     image(img) {
@@ -163,6 +164,8 @@ export default {
 .movie-detail {
   position: relative;
   font-family: 'Nanum Gothic Coding', monospace;
+  min-width: 1250px;
+
 }
 .movie-detail-image {
   background-size: cover;
@@ -183,9 +186,12 @@ export default {
   background-color: rgb(34, 30, 30);
   opacity: 0.7;
   content: "";
+  margin-top: 130px;
+  z-index: -100;
 }
 .movie-content {
   position: relative;
+  z-index: 999;
 }
 .genres:not(:first-of-type)::before {
   margin-bottom: 4px;

@@ -17,13 +17,17 @@
       </thead>
       <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.movieId)" style="background-color:#9d9b9a;">
         <tr>
-          <td>{{ idx+1 }}</td>
-          <td>{{ article.movietitle }}</td>
-          <td>
-          <span>{{ article.content }} </span> 
-          </td>
 
-          <td>{{ article.rating }}</td>
+          <th>{{ idx+1 }}</th>
+          <th>{{ article.movietitle }}</th>
+          <th>{{ article.content }}</th>
+          <th v-if="article.rating === 5">★★★★★</th>
+          <th v-else-if="4 <= article.rating">☆★★★★</th>
+          <th v-else-if="3 <= article.rating">☆☆★★★</th>
+          <th v-else-if="2 <= article.rating">☆☆☆★★</th>
+          <th v-else-if="1 <= article.rating">☆☆☆☆★</th>
+          <th v-else></th>
+
         </tr>
       </tbody>
     </table>
@@ -59,6 +63,7 @@ export default {
       })
         .then((res) => {
           this.articles = res.data
+          console.log(this.articles[0])
         })
         .catch((err) => {
           console.log(err)
@@ -81,6 +86,7 @@ export default {
 </script>
 
 <style scoped>
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
 td, th {

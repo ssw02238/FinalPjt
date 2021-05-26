@@ -15,12 +15,16 @@
           </thead>
           <tbody v-for="(review, idx) in reviews" :key="idx" @click="goDetail(review.movieId)" style="background-color:#9d9b9a;">
             <tr>
-              <td>{{ idx+1 }}</td>
-              <td>{{ review.movietitle }}</td>
-              <td>
-              <span style="color:black">{{ review.content }} </span> 
-              </td>
-              <td>{{ review.rating }}</td>
+
+              <th>{{ idx+1 }}</th>
+              <th>{{review.movietitle}}</th>
+              <th>{{review.content}}</th>
+              <th v-if="review.rating === 5">★★★★★</th>
+              <th v-else-if="4 <= review.rating">☆★★★★</th>
+              <th v-else-if="3 <= review.rating">☆☆★★★</th>
+              <th v-else-if="2 <= review.rating">☆☆☆★★</th>
+              <th v-else-if="1 <= review.rating">☆☆☆☆★</th>
+              <th v-else></th>
               <th><button @click="deleteReview(review)">X</button></th>
             </tr>
           </tbody>
