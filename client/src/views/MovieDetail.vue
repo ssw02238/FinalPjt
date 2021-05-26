@@ -5,7 +5,7 @@
       :style="{ backgroundImage: `url(${image(movieDetail.backdrop_path)})`}"
     ></div>
     <div class="movie-content d-flex">
-      <div style="">
+      <div>
          <img v-bind:src="'https://image.tmdb.org/t/p/w500/'+movieDetail.poster_path" class="m-2" alt="movie_poster" style="height:500px;">
       </div>
       <div class="ml-5 w-75 ms-3">
@@ -73,7 +73,7 @@ export default {
     return {
       movieDetail: {},
       comments: [],
-      articles: '',
+      articles: null,
       id: '',
       date: null,
       weather: [0, 0, 0],
@@ -83,7 +83,6 @@ export default {
   created: function () {
     if (localStorage.getItem('jwt')) {
       this.getArticle()
-      this.getWeather()
     } else {
       this.$router.push({name: 'Login'})
     }
@@ -98,7 +97,6 @@ export default {
   },
   methods: {
     image(img) {
-      // console.log( `https://image.tmdb.org/t/p/original/${img}`)
       return `https://image.tmdb.org/t/p/original/${img}`;
     },
     youtube(src) {
@@ -119,6 +117,7 @@ export default {
       })
         .then((res) => {
           this.articles = res.data
+          this.getWeather()
         })
         .catch((err) => {
           console.log(err)
@@ -127,32 +126,29 @@ export default {
     getWeather: function () {
       for (var cnt in this.articles) {
         if (this.articles[cnt].movieId == this.id) {
-          if (this.articles[cnt].title == '맑음') {
+          if (this.articles[cnt].weather == '맑음') {
             this.weather[0] += 1
-          } else if (this.articles[cnt].title == '흐림') {
+          } else if (this.articles[cnt].weather == '흐림') {
             this.weather[1] += 1
           } else {
             this.weather[2] += 1
           }
         }
       }
-      console.log(this.weather)
       // 최댓 등장 횟수
       this.choose = (Math.max.apply(null, this.weather))
-      console.log(this.choose)
       if (this.choose != 0) {
         if (this.weather.indexOf(this.choose) == '0') {
           // 문구
-          this.choose = '화창한 날씨에 함께 할 영화 ↑'
+          this.choose = '화창한 날씨에 함께 할 영화'
         } else if (this.weather.indexOf(this.choose) == '1') {
-          this.choose = '흐리고 울적한 날에 딱 맞는 영화↑'
+          this.choose = '흐리고 울적한 날에 딱 맞는 영화'
         } else {
-          this.choose = '천둥 번개처럼 역동적인 영화↑'
+          this.choose = '천둥 번개처럼 긴장감있는 영화'
         }
       } else {
         this.choose = ''
       }
-      console.log(this.choose)
     }
   },
 }
@@ -187,11 +183,9 @@ export default {
   opacity: 0.7;
   content: "";
   margin-top: 130px;
-  z-index: -100;
 }
 .movie-content {
   position: relative;
-  z-index: 999;
 }
 .genres:not(:first-of-type)::before {
   margin-bottom: 4px;

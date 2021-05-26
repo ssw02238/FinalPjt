@@ -7,7 +7,6 @@ import Signup from '@/views/accounts/Signup'
 import Login from '@/views/accounts/Login'
 import ArticleList from '@/views/community/ArticleList'
 import CreateArticle from '@/views/community/CreateArticle'
-import ArticleDetail from '@/views/community/ArticleDetail'
 import MyPage from '@/views/accounts/MyPage'
 
 
@@ -48,12 +47,6 @@ const routes = [
     path: '/community/createarticle',
     name: 'CreateArticle',
     component: CreateArticle,
-
-  },
-  {
-    path: '/community/articledetail:id',
-    name: 'ArticleDetail',
-    component: ArticleDetail,
 
   },
   {

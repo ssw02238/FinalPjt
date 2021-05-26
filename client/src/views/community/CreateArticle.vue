@@ -1,18 +1,20 @@
 <template>
-  <div class="createArticle container py-3" style="border-radius: 1em;background-color:#5f5446; border: 1px solid black;font-family: 'Gothic A1', sans-serif;">
-    <label for="movie-select" class="me-2 mt-3">Choose a Movie:</label>
-    <select v-model="movietitle" style="color:black; height:45px; width:70%">
-      <option disabled style="color:black">Please select one</option>
-      <option v-for="(movie, idx) in movies"
-      :key="idx"
-      :value="[movie.id, movie.title]"
-      style="color:black; width:70%;"
-      >
-      {{ movie.title }}
-      </option>
-    </select>
-    <div class="mb-5 mt-3">
-      <span> 오늘  </span>
+  <div class="createArticle container py-3 d-flex flex-column align-items-end" style="border-radius: 1em; border: 5px solid white;font-family: 'Gothic A1', sans-serif; min-width: 1250px;">
+    <div class="my-3 w-100 d-flex justify-content-start align-items-center ">
+      <label for="movie-select" class="mt-3 w-25">영화 제목</label>
+      <select v-model="movietitle" style="color:black; height:45px; width:70%">
+        <option disabled style="color:black">Please select one</option>
+        <option v-for="(movie, idx) in movies"
+        :key="idx"
+        :value="[movie.id, movie.title]"
+        style="color:black; width:70%;"
+        >
+        {{ movie.title }}
+        </option>
+      </select>
+    </div>
+    <div class="my-3 w-100 d-flex justify-content-start align-items-center ">
+      <span class="w-25"> 오늘  </span>
       <!-- <input class="mt-5" type="text" v-model.trim="title" style="width:70%;"> <br> -->
       <select v-model="weather" style="color:black; height:45px; width:70%"><br>
         <option disabled>Open this select menu</option>
@@ -21,16 +23,16 @@
         <option value="천둥 번개">천둥 번개</option>
       </select>
     </div>
-    <div class="mb-5">
-      <span>한줄평 </span>
-      <input type="text" class="get_content" v-model.trim="content" style="width:70%; height:100px"> <br>
+    <div class="my-3 w-100 d-flex justify-content-start align-items-center ">
+      <span class="w-25">한줄평 </span>
+      <input placeholder="100자 이내로 입력해주세요." type="text" class="get_content" v-model.trim="content" style="width:70%; height:100px"> <br>
     </div>
-    <div class="mb-5">
-      <span>별점 </span>
+    <div class="my-3 w-100 d-flex justify-content-start align-items-center ">
+      <span class="w-25">별점 </span>
       <input placeholder="5점 만점" type="number" min='0' max='5' v-model.trim="rating" @keyup.enter="createArticle" style="width:23%"> <br> 
     </div>
-    <button @click="createArticle" class="btn btn-secondary mb-3" style="color:black; font-size:20px">작성하기</button> 
-</div>
+    <button @click="createArticle" class="btn btn-secondary mb-3" style="color:black; font-size:20px; margin-right: 10%;">작성하기</button> 
+  </div>
 </template>
 
 <script>
