@@ -129,6 +129,7 @@ export default {
 .movie-detail {
   position: relative;
   font-family: 'Nanum Gothic Coding', monospace;
+  min-width: 1250px;
 
 }
 .movie-detail-image {
