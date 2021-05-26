@@ -7,14 +7,7 @@ class ArticleListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('id','title','content','rating', 'movietitle', 'movieId')
-
-
-# class MovieCommentSerializer(serializers.ModelSerializer):
-
-#     class Meta:
-#         model = MovieComment
-#         fields = ('id', 'content','rating',)
+        fields = ('id','weather','content','rating', 'movietitle', 'movieId')
 
 
 class ArticleSerializer(serializers.ModelSerializer):
