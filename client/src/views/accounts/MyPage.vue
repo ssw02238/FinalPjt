@@ -33,11 +33,13 @@
       <button class="btn btn-warning my-3" style="font-size:25px;font-family: 'Noto Sans KR', sans-serif;" @click="getRecommend">추천 영화 확인!</button>
     </div>
       <!-- recommendation -->
-        <div v-if="recommend_movie" class="d-flex movie-recommend">
-          <div v-for="(movie, idx) in recommend_movie" :key="idx" class="mx-2">
-            <img @click="goDetail(movie.id)" v-bind:src="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" class="m-2" alt="movie_poster" style="height:500px;width:100%">
+      <div class="container">
+        <div v-if="recommend_movie" class="row">
+          <div v-for="(movie, idx) in recommend_movie" :key="idx" class="mx-2 col-sm">
+            <img @click="goDetail(movie.id)" v-bind:src="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" class="m-2" alt="movie_poster" style="height:500px;">
             <h3 style="font-size:20px;  font-family: 'Noto Sans KR', sans-serif;">{{ movie.title }} </h3>
           </div>
+        </div>
       </div>
   </div>
 </template>
@@ -145,10 +147,6 @@ th button {
   color: white;
   background: #5a6160;
 }
-.movie-recommend {
-  /* max-width: 5px; */
-  margin-left: 5px;
-  
-}
+
 </style>
 
