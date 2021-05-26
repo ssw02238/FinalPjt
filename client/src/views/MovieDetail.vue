@@ -29,7 +29,7 @@
         </div>
         <div v-if="movieDetail.overview" class="mt-3" style="max-width:60rem;">
           <h5>{{ movieDetail.overview }}</h5>
-          
+        
         </div>
         <div v-else class="mt-5">
           <h5 style="margin-top:200px; font-size: 30px">줄거리가 등록되지 않았습니다!</h5>
@@ -37,7 +37,7 @@
         <div v-if="movieDetail.videos && movieDetail.videos.results">
           <iframe
           v-if="movieDetail.videos.results[0]"
-            class="mt-4"
+            class="m-4"
             :key="movieDetail.videos.results[0].key"
             width="640"
             height="360"
@@ -47,14 +47,16 @@
           <div v-else class="mt-5">
             <p style="margin-top:300px; font-size: 30px">해당 영상이 존재하지 않습니다.</p>
           </div>
-          <div v-for="(article, idx) in articles" :key="idx" class="bg-light">
-            <div v-if="article.movieId === id">
-              <p style="font-size:30px; color:black;">한줄평</p>
-              <ul>
-                <li style="color:black;">
-              {{ article.content}} / 별점: {{ article.rating }}
-                </li>
-              </ul>
+          <div class="comments mt-3 px-5" style="width:640" >
+            <p class="p-2" style="font-size:32px; color:white;">{{choose}}</p>
+            <div v-for="(article, idx) in articles" :key="idx">
+              <div v-if="article.movieId === id">
+                <ul>
+                  <ol style="color:white; font-size: 20px">
+                   {{ article.content}} / ★ {{ article.rating }} 
+                  </ol>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -74,11 +76,14 @@ export default {
       comments: [],
       articles: '',
       id: '',
+      weather: [0, 0, 0],
+      choose: '',
     }
   },
   created: function () {
     if (localStorage.getItem('jwt')) {
       this.getArticle()
+      this.getWeather()
     } else {
       this.$router.push({name: 'Login'})
     }
@@ -118,6 +123,36 @@ export default {
           console.log(err)
         })
     },
+    getWeather: function () {
+      for (var cnt in this.articles) {
+        if (this.articles[cnt].movieId == this.id) {
+          if (this.articles[cnt].title == '맑음') {
+            this.weather[0] += 1
+          } else if (this.articles[cnt].title == '흐림') {
+            this.weather[1] += 1
+          } else {
+            this.weather[2] += 1
+          }
+        }
+      }
+      console.log(this.weather)
+      // 최댓 등장 횟수
+      this.choose = (Math.max.apply(null, this.weather))
+      console.log(this.choose)
+      if (this.choose != 0) {
+        if (this.weather.indexOf(this.choose) == '0') {
+          // 문구
+          this.choose = '화창한 날씨에 함께 할 영화 ↑'
+        } else if (this.weather.indexOf(this.choose) == '1') {
+          this.choose = '흐리고 울적한 날에 딱 맞는 영화↑'
+        } else {
+          this.choose = '천둥 번개처럼 역동적인 영화↑'
+        }
+      } else {
+        this.choose = ''
+      }
+      console.log(this.choose)
+    }
   },
 }
 </script>

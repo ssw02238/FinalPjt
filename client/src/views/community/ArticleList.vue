@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <span class="me-5" style="font-size:23px;font-family: 'Nanum Gothic Coding', monospace;">현재 상영작 리뷰 확인하기</span>
+      <span class="me-3" style="font-size:25px;font-family: 'Noto Sans KR', sans-serif;">현재 상영작 리뷰 확인하기</span>
       <router-link :to="{ name: 'CreateArticle' }"><button class="btn btn-success ms-5" style="font-family: 'Nanum Gothic Coding', monospace;font-size:1rem">새 글 작성하기</button></router-link> 
       
     </div>
@@ -11,16 +11,19 @@
         <tr>
           <th scope="col">Rank</th>
           <th scope="col">영화 제목</th>
-          <th scope="col">글 제목</th>
+          <th scope="col">한줄평</th>
           <th scope="col">☆☆☆☆☆</th>
         </tr>
       </thead>
-      <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.movieId)">
+      <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.movieId)" style="background-color:#9d9b9a;">
         <tr>
-          <th>{{ idx+1 }}</th>
-          <th>{{ article.movietitle }}</th>
-          <th>{{ article.title }}</th>
-          <th>{{ article.rating }}</th>
+          <td>{{ idx+1 }}</td>
+          <td>{{ article.movietitle }}</td>
+          <td>
+          <span>{{ article.content }} </span> 
+          </td>
+
+          <td>{{ article.rating }}</td>
         </tr>
       </tbody>
     </table>
@@ -78,12 +81,19 @@ export default {
 </script>
 
 <style scoped>
-th {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+td, th {
   color: black;
-  font-family: 'Nanum Gothic Coding', monospace;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 25px;
 }
 th button {
   color: white;
   background: #5a6160;
+}
+td span {
+  color: black;
+
 }
 </style>
