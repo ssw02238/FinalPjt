@@ -9,7 +9,7 @@
               <th scope="col">Rank</th>
               <th scope="col">영화 제목</th>
               <th scope="col">한줄평</th>
-              <th scope="col">☆☆☆☆☆</th>
+              <th scope="col">☆</th>
               <th scope="col"> 삭제</th>
             </tr>
           </thead>
@@ -20,10 +20,10 @@
               <th>{{review.movietitle}}</th>
               <th>{{review.content}}</th>
               <th v-if="review.rating === 5">★★★★★</th>
-              <th v-else-if="4 <= review.rating">☆★★★★</th>
-              <th v-else-if="3 <= review.rating">☆☆★★★</th>
-              <th v-else-if="2 <= review.rating">☆☆☆★★</th>
-              <th v-else-if="1 <= review.rating">☆☆☆☆★</th>
+              <th v-else-if="4 <= review.rating">★★★★☆</th>
+              <th v-else-if="3 <= review.rating">★★★☆☆</th>
+              <th v-else-if="2 <= review.rating">★★☆☆☆</th>
+              <th v-else-if="1 <= review.rating">★☆☆☆☆</th>
               <th v-else></th>
               <th><button @click="deleteReview(review)">X</button></th>
             </tr>
@@ -141,7 +141,7 @@ export default {
 th, td {
   color: black;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 25px
+  font-size: 20px
 }
 th button {
   color: white;

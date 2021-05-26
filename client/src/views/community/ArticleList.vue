@@ -10,7 +10,7 @@
           <th scope="col">Rank</th>
           <th scope="col">영화 제목</th>
           <th scope="col">한줄평</th>
-          <th scope="col">☆☆☆☆☆</th>
+          <th scope="col">☆</th>
         </tr>
       </thead>
       <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.movieId)" style="background-color:#9d9b9a;">
@@ -20,10 +20,10 @@
           <th>{{ article.movietitle }}</th>
           <th>{{ article.content }}</th>
           <th v-if="article.rating === 5">★★★★★</th>
-          <th v-else-if="4 <= article.rating">☆★★★★</th>
-          <th v-else-if="3 <= article.rating">☆☆★★★</th>
-          <th v-else-if="2 <= article.rating">☆☆☆★★</th>
-          <th v-else-if="1 <= article.rating">☆☆☆☆★</th>
+          <th v-else-if="4 <= article.rating">★★★★☆</th>
+          <th v-else-if="3 <= article.rating">★★★☆☆</th>
+          <th v-else-if="2 <= article.rating">★★☆☆☆</th>
+          <th v-else-if="1 <= article.rating">★☆☆☆☆</th>
           <th v-else></th>
 
         </tr>

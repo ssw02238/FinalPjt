@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <div id="nav" style="min-width:1250px">
-      <span v-if="isLogin" class="p-3">
+    <div id="nav" class="sticky-top" style="background-color:rgb(34, 30, 30);">
+      <span v-if="isLogin" class="px-3 py-1">
         <router-link to="/popular" class="mx-3">인기 상영작</router-link> 
         <router-link to="/nowplaying" class="mx-3">현재 상영작</router-link> 
         <router-link :to="{ name: 'ArticleList' }" class="mx-3">한줄평</router-link>
@@ -10,6 +10,7 @@
         <router-link @click.native="logout" to="#" class="mx-3">로그아웃</router-link>
       </span>
       <span v-else>
+        <h1>⛅ Movie Whether ⚡</h1>
         <router-link to="/accounts/login" class="mx-3">로그인</router-link> 
         <router-link to="/accounts/signup" class="mx-3">회원가입</router-link> 
       </span>  
@@ -64,7 +65,7 @@ export default {
 }
 
 #nav {
-  padding: 50px;
+  padding: 20px;
   z-index: 999;
 }
 
