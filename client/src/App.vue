@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <div id="nav" style="min-width: 1250px;">
+    <div id="nav" style="min-width:1250px">
       <span v-if="isLogin" class="p-3">
 
         <router-link to="/popular" class="mx-3">인기 상영작</router-link> 
@@ -35,8 +35,6 @@ export default {
       localStorage.removeItem('username')
       localStorage.removeItem('user_id')
       localStorage.removeItem('reviews')
-      localStorage.removeItem('vuex')
-      // console.log(localStorage)
       this.$router.push({ name: 'Login' })
     },
   },
@@ -62,7 +60,6 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
 #app {
   font-family: 'Yeon Sung', cursive;
-  /* font-family: 'Noto Sans KR', sans-serif; */
   text-align: center;
   color: #4495e6;
 }

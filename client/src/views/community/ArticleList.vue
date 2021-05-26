@@ -2,11 +2,11 @@
   <div class="container">
     <div>
       <span class="me-3" style="font-size:25px;font-family: 'Noto Sans KR', sans-serif;">현재 상영작 리뷰 확인하기</span>
-      <router-link :to="{ name: 'CreateArticle' }"><button class="btn btn-success ms-5" style="font-family: 'Nanum Gothic Coding', monospace;font-size:1rem">새 글 작성하기</button></router-link> 
+      <router-link :to="{ name: 'CreateArticle' }"><button class="btn btn-warning ms-5" style="font-family:'Noto Sans KR', sans-serif;font-size:25px">새 글 작성하기</button></router-link> 
       
     </div>
     <hr>
-    <table class="table" style="font-size:20px; border-radius: 1em;background-color:#ddcfd5;">
+    <table class="table" style="font-size:20px; border-radius: 1em;background-color:#e0e8ed;">
       <thead>
         <tr>
           <th scope="col">Rank</th>

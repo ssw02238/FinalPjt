@@ -1,6 +1,6 @@
 <template>
-  <div class=" container py-3 w-75" style="background-color:#483946;border-radius: 1em;">
-    <h1 style="font-family: 'Gothic A1', sans-serif;" >Login</h1>
+  <div class="container py-3 w-75" style="border-radius: 1em;">
+    <h1 style="font-family: 'Noto Sans KR', sans-serif;" >Login</h1>
     <div>
       <label for="username" class="my-3 me-2" style="font-size:27px">아이디: </label>
       <input type="text" id="username" v-model="credentials.username" style="font-size:25px;color:black;width:150px; height:35px">
@@ -9,7 +9,7 @@
       <label for="password"  class="my-3 me-2" style="font-size:27px">비밀번호: </label>
       <input type="password" id="password" v-model="credentials.password" style="font-size:15px;color:black;width:150px; height:35px">
     </div>
-    <button @click="login" class="mt-5 p-2" style="font-family: 'Nanum Gothic Coding', monospace;font-size:20px; color:black;border-radius: 0.3em;">로그인</button>
+    <button @click="login" class="mt-3 p-2" style="font-family: 'Noto Sans KR', sans-serif;;font-size:20px; color:black;border-radius: 0.3em;">로그인</button>
   </div>
 </template>
 
@@ -73,9 +73,10 @@ export default {
 }
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
 
 .container div {
-    font-family: 'Nanum Gothic Coding', monospace;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 </style>
