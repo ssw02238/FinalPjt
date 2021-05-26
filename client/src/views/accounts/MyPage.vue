@@ -1,23 +1,24 @@
 <template>
   <div class="container">
     <div>
-      <span style="font-size:60px"> "{{userName}}" </span> 
-      <span style="font-size:45px"> 님의 My page </span>
-        <table class="table" style="font-size:20px; border-radius: 1em;background-color:#ddcfd5;">
+      <span style="font-size:40px; font-family: 'Noto Sans KR', sans-serif;"> {{userName}} </span> 
+      <span style="font-size:35px;font-family: 'Noto Sans KR', sans-serif;"> 님의 My page </span>
+        <table class="table" style="font-size:20px;border-radius: 1em;background-color:#ddcfd5;">
           <thead>
             <tr>
               <th scope="col">Rank</th>
               <th scope="col">영화 제목</th>
-              <th scope="col">글 제목</th>
+              <th scope="col">한줄평</th>
               <th scope="col">☆☆☆☆☆</th>
               <th scope="col"> 삭제</th>
             </tr>
           </thead>
-          <tbody v-for="(review, idx) in reviews" :key="idx" @click="goDetail(review.movieId)">
+          <tbody v-for="(review, idx) in reviews" :key="idx" @click="goDetail(review.movieId)" style="background-color:#9d9b9a;">
             <tr>
+
               <th>{{ idx+1 }}</th>
               <th>{{review.movietitle}}</th>
-              <th>{{review.title}}</th>
+              <th>{{review.content}}</th>
               <th v-if="review.rating === 5">★★★★★</th>
               <th v-else-if="4 <= review.rating">☆★★★★</th>
               <th v-else-if="3 <= review.rating">☆☆★★★</th>
@@ -121,9 +122,6 @@ export default {
           console.log(error)
         }
     },
-    // goDetail(id) {
-    //   this.$router.push({ name: 'MovieDetail',  params: {id: id }})
-    // },
   },
   mounted: async function () {
     if (localStorage.getItem('jwt')) {
@@ -138,9 +136,11 @@ export default {
 
 
 <style scoped>
-th {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+th, td {
   color: black;
-  font-family: 'Nanum Gothic Coding', monospace;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 25px
 }
 th button {
   color: white;
@@ -149,7 +149,7 @@ th button {
 .movie-recommend {
   /* max-width: 5px; */
   margin-left: 5px;
-  font-family: 'Nanum Gothic Coding', monospace;
+  
 }
 </style>
 

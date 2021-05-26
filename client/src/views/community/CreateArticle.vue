@@ -2,7 +2,7 @@
   <div class="createArticle container py-3" style="border-radius: 1em;background-color:#5f5446; border: 1px solid black;font-family: 'Gothic A1', sans-serif;">
     <label for="movie-select" class="me-2 mt-3">Choose a Movie:</label>
     <select v-model="movietitle" style="color:black; height:45px; width:70%">
-      <option disabled value="" style="color:black">Please select one</option>
+      <option disabled style="color:black">Please select one</option>
       <option v-for="(movie, idx) in movies"
       :key="idx"
       :value="[movie.id, movie.title]"
@@ -11,16 +11,22 @@
       {{ movie.title }}
       </option>
     </select>
-    <div class="mb-5">
-      <span>제목: </span>
-      <input class="mt-5" type="text" v-model.trim="title" style="width:70%;"> <br>
+    <div class="mb-5 mt-3">
+      <span> 오늘  </span>
+      <!-- <input class="mt-5" type="text" v-model.trim="title" style="width:70%;"> <br> -->
+      <select v-model="weather" style="color:black; height:45px; width:70%"><br>
+        <option disabled>Open this select menu</option>
+        <option value="맑음">맑음</option>
+        <option value="흐림">흐림</option>
+        <option value="천둥 번개">천둥 번개</option>
+      </select>
     </div>
     <div class="mb-5">
-      <span>내용: </span>
-      <input type="text" class="get_content" v-model.trim="content" style="width:70%; height:300px"> <br>
+      <span>한줄평 </span>
+      <input type="text" class="get_content" v-model.trim="content" style="width:70%; height:100px"> <br>
     </div>
     <div class="mb-5">
-      <span>별점: </span>
+      <span>별점 </span>
       <input placeholder="5점 만점" type="number" min='0' max='5' v-model.trim="rating" @keyup.enter="createArticle" style="width:23%"> <br> 
     </div>
     <button @click="createArticle" class="btn btn-secondary mb-3" style="color:black; font-size:20px">작성하기</button> 
@@ -34,7 +40,7 @@ export default {
   name: 'CreateArticle',
   data: function () {
     return {
-      title: null,
+      weather: null,
       content: null,
       rating: null,
       movietitle: null,
@@ -51,13 +57,13 @@ export default {
     },
     createArticle: function () {
       const ArticleItem = {
-        title: this.title,
+        weather: this.weather,
         content: this.content,
         rating: this.rating,
         movietitle: this.movietitle[1],
         movieId: this.movietitle[0]
       }
-      if (ArticleItem.title) {
+      if (ArticleItem.weather) {
         axios({
           method: 'post',
           url: 'http://127.0.0.1:8000/movies/articles/',
@@ -107,5 +113,9 @@ export default {
   }
   .createArticle {
     font-size: 1.8rem;
+  }
+  option {
+    color:black; 
+    width:70%;
   }
 </style>

@@ -1,10 +1,12 @@
 <template>
   <div id="app">
+
     <div id="nav" style="min-width: 1250px;">
-      <span v-if="isLogin" class="px-2 pt-3" style="background-color:#87615e;border-radius: 1em;">
+      <span v-if="isLogin" class="p-3">
+
         <router-link to="/popular" class="mx-3">인기 상영작</router-link> 
         <router-link to="/nowplaying" class="mx-3">현재 상영작</router-link> 
-        <router-link :to="{ name: 'ArticleList' }" class="mx-3">커뮤니티</router-link>
+        <router-link :to="{ name: 'ArticleList' }" class="mx-3">한줄평</router-link>
         <router-link :to="{ name: 'MyPage'}" class="mx-3">마이페이지</router-link> 
         <router-link @click.native="logout" to="#" class="mx-3">로그아웃</router-link>
       </span>
@@ -60,6 +62,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
 #app {
   font-family: 'Yeon Sung', cursive;
+  /* font-family: 'Noto Sans KR', sans-serif; */
   text-align: center;
   color: #4495e6;
 }
@@ -70,10 +73,10 @@ export default {
 }
 
 #nav a {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #ffffff;
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
 }
 
 #nav a:hover{
