@@ -62,7 +62,7 @@
         <div class="comments m-5 px-5" style="width:640">
           <p class="p-2" style="font-size:36px; color:white;">{{choose}}</p>
           <div v-for="(article, idx) in paginatedArticles" :key="idx">
-            <p v-if="article.movieId === id" style="color:white; font-size: 20px">
+            <p v-if="article.movieId === Number(id)" style="color:white; font-size: 20px">
               {{ article.content }} / <span style="color:yellow;">★</span> {{ article.rating }}
             </p>
           </div>
@@ -176,13 +176,13 @@ export default {
       const start = (this.page - 1) * 5, // 1페이지면 0~5
             end = start + 5;
       const filteredArticles = this.articles.filter((article) => {
-        return article.movieId === this.id
+        return article.movieId === Number(this.id)
         })// articles에서 아이디 맞는거 걸러줌
       return filteredArticles.slice(start, end);
     },
     totalPage: function () {
       const filteredArticles = this.articles.filter((article) => {
-        return article.movieId === this.id
+        return article.movieId === Number(this.id)
       })
       return filteredArticles.length
     }
