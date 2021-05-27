@@ -39,7 +39,7 @@ def signup(request):
 @permission_classes([IsAuthenticated])
 def profile(request):
     if request.method == 'GET':
-        reviews = Article.objects.filter(user_id=request.user.id)
+        reviews = Article.objects.filter(user_id=request.user.id).order_by('-rating')
         serializer = ArticleListSerializer(reviews, many=True)
         person = {
             'user_id': request.user.id,
