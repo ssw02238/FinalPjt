@@ -1,18 +1,18 @@
 from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
-
+from rest_framework.decorators import api_view 
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+import os 
 import requests
 from .serializers import ArticleListSerializer, ArticleSerializer, MovieSerializer
 from .models import Article, Movie
 
 @api_view(['GET'])
 def seeding(request): 
-    API_KEY = '80ced8591ed61ab4a22df20840478047'
+    API_KEY = os.environ.get("DJANGO_SECRET_KEY")
     for pageNum in range(1, 10): 
         URL = f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=ko-KR&page={pageNum}'
         res = requests.get(URL).json()
