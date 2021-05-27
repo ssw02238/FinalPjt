@@ -13,10 +13,9 @@
           <th scope="col">☆</th>
         </tr>
       </thead>
-      <tbody v-for="(article, idx) in articles" :key="idx" @click="goDetail(article.movieId)" style="background-color:#9d9b9a;">
+      <tbody v-for="(article, idx) in paginatedArticles" :key="idx" @click="goDetail(article.movieId)" style="background-color:#9d9b9a;">
         <tr>
-
-          <th>{{ idx+1 }}</th>
+          <th>{{ 10*(page-1) + idx+1 }}</th>
           <th>{{ article.movietitle }}</th>
           <th>{{ article.content }}</th>
           <th v-if="article.rating === 5">★★★★★</th>
@@ -25,10 +24,18 @@
           <th v-else-if="2 <= article.rating">★★☆☆☆</th>
           <th v-else-if="1 <= article.rating">★☆☆☆☆</th>
           <th v-else></th>
-
         </tr>
       </tbody>
     </table>
+      <el-pagination
+        class="text-center mb-4 d-flex align-items-center justify-content-center "
+        background
+        :page-size="10"
+        layout="prev, pager, next"
+        :total="totalPage"
+        @current-change="movePage">
+      </el-pagination>
+
   </div>
 </template>
 
@@ -42,7 +49,7 @@ export default {
     return {
       articles: [],
       // id: null,
-
+      page: 1,
     }
   },
   methods: {
@@ -70,6 +77,9 @@ export default {
     goDetail(id) {
       this.$router.push({ name: 'MovieDetail',  params: {id: id }})
     },
+    movePage: function (page) {
+      this.page = page
+    },
   },
   created: function () {
     if (localStorage.getItem('jwt')) {
@@ -79,6 +89,17 @@ export default {
       this.$router.push({name: 'Login'})
     }
   },
+  computed: { 
+    paginatedArticles: function () {
+      const start = (this.page - 1) * 10, // 1페이지면 0~10
+            end = start + 10;
+      return this.articles.slice(start, end);
+    },
+    totalPage: function () {
+      console.log(this.paginatedArticles)
+      return this.articles.length
+    }
+  }
 }
 </script>
 
