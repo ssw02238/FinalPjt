@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os
+import dotenv
 import sys
 
-
+os.environ.get("DJANGO_SECRET_KEY")
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'finalPjt.settings')
@@ -19,4 +20,5 @@ def main():
 
 
 if __name__ == '__main__':
+    dotenv.read_dotenv()
     main()
