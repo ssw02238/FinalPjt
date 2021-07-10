@@ -25,7 +25,7 @@
 >
 > ​	(tmdb 기준 1~3page 분량)
 >
-> Now Playing 게시판 DB -> Django 에서 영화 데이터 180개 수집 
+> Now Playing 게시판 DB -> Django 에서 영화 데이터 180개 수집
 
 
 
@@ -61,7 +61,7 @@
 
 - 일자별 계획
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f0c641cb-bdb1-4c39-ab00-2655d5543324/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210527T013401Z&X-Amz-Expires=86400&X-Amz-Signature=79ad6061714a8eea808bf3f7a52f051964776a2c8a8516678729ac4fb2216b22&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![image-20210710105330034](README.assets/image-20210710105330034.png)
 
 
 
@@ -72,39 +72,39 @@
 >     
 >
 >     - 가입 시 나이 정보를 입력하여 연령대 별 영화 추천 
->        
+>            
 >         → 자신이 리뷰를 작성한 영화 중 별점이 4점 이상인 영화들과 유사한 영화를 랜덤으로 추천하는 기능으로 변경 
 >
 >         
 >
 >     -  게시할 영화 정보 (대세 컨텐츠) 
->        
+>            
 >         →  Popular 기능으로 구현 
->        
+>            
 >         →  그 외 최신작으로 tmdb의 latest url을 사용하려고 했으나, 하나의 영화 정보만 담겨와서 실패 (추후 now playing으로 구현)
 >
 >         
 >
 >     - 해당 영화의 리뷰가 작성된 네이버 블로그로 가게 하기 
->        
+>            
 >         → 디테일 페이지에서 유튜브 예고편과 한줄평 리뷰가 바로 나오도록 개선
 >
 >         
 >
 >     - 리뷰 작성 관련 
->        
+>            
 >         → 리뷰 게시글 > 영화 디테일로 이동 가능 및 댓글 형식으로 리뷰 제목만 보이게 
->        
+>            
 >         → 누르면 리뷰 글로 이동부분은 리뷰 detail이 필요없다고 판단하여 계획 수정 
->        
+>            
 >         → 그 외 디테일에서 댓글의 한줄평과 별점이 보이도록 변경
 >
 >         
 >
 >     - Event 장르 별 랜덤 영화 픽 
->        
+>            
 >         → 사용자에게 custom 된 영화 추천을 위해 평점 4점 이상을 준 영화들 기준으로 영화 추천 
->        
+>            
 >         → 그 외 영화 분위기를 날씨 정보로 받아 가장 많이 받은 날씨를 기준으로 영화 detail 페이지에 각각 다른 문구 등장 
 
 
@@ -133,11 +133,9 @@
 
 ### :lion:데이터베이스 모델링(ERD)
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/47ea1a56-527e-432a-a15a-c9722d6fba56/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210527T014444Z&X-Amz-Expires=86400&X-Amz-Signature=d4139cc8964de8fa8fbfb214d67efccbaccf73815b945b5af38b5576390c6215&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/47ea1a56-527e-432a-a15a-c9722d6fba56/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210710%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210710T015423Z&X-Amz-Expires=86400&X-Amz-Signature=91a25f4e057975dcf305e030af60f7e4420fa6ff615f9e7420b86a8e15b6babd&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 <hr>
-
-
 
 ### :lion:필수 기능에 대한 설명
 
@@ -218,7 +216,7 @@
 >
 >     Vue javascript 문법을 이용한 날씨 별 문구 등장 및 영화 추천 
 >
-> - 또한, 개발과 관련된 오류를 잡는데에 너무 시간을 많이 투자하여 디자인 고치는 것에 굉장히... 회의감을 느끼고 ㅋㅋ 디자인을 포기했었지만 교수님의 피드백으로 인해 더 완성도 높은 사이트를 제작할 수 있었다. 
+> - 또한, 개발과 관련된 오류를 잡고 디자인 구성짜는거에 굉장한 시간을 투자하여 정말 힘들었지만.. 교수님의 피드백으로 인해 더 완성도 높은 사이트를 제작할 수 있었다. 
 >
 >   - d-flex, align 등 이용을 다시 공부해보게 되었다. 
 >
@@ -239,22 +237,22 @@
 > - 유저와 연결할 수도 없었으며 django에서 불러온 영화들 그리고 한줄평도 모든 게 다 안됐다. 이때라도 포기하고 엎었어야 하는데 오기가 생겨서 그대로 진행하기로 했다.  
 > - 하나하나 잘못된 부분을 고쳐가며 억지로 데이터들을 받고 사용하는 과정에서 많이 불편하고 힘들었지만, 문제들을 해결하며 많이 배웠다. 또 해결했을 때의 뿌듯함이 지겨운 프로젝트를 계속 진행하게 해주는 원동력이 되어줬다.  
 > - 어찌어찌 해결들이 됐지만, 코드가 너무 지저분했다. 다음부터는 잘못된 것을 깨달았을 때 고쳐야겠다.  
-> - 이번 프로젝트를 진행하며 시작할 때 어떻게 홈페이지를 구성할 것인가에 대한 논의를 대충 하고 진행했다. 그러다 보니 꾸미고 기능을 추가하고 배치하는 데 문제가 많았다.  
+> - 이번 프로젝트를 진행하며 시작할 때 어떻게 홈페이지를 구성할 것인가에 대한 논의를 잘 마무리하지 못하고 진행했다. 그러다 보니 꾸미고 기능을 추가하고 배치하는 데 문제가 많았다.  
 > - 앞으로 프로젝트를 새로 진행한다면 구상에 더 많은 시간을 써야겠다. 
 
 
 
 ### :lion: 완성작
 
-Git : `https://github.com/ssw02238/FinalPjt ` 
+Git : https://github.com/ssw02238/FinalPjt 
 
-Notion : `https://www.notion.so/SSAFY-b944695aeeb24cb5a9825674d6519e92`
+Notion : https://www.notion.so/SSAFY-b944695aeeb24cb5a9825674d6519e92
 
 
 
 < Popular / Now playing >
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cd4f7782-ba11-4bbf-a50a-0fdfbfbce3da/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210527T015234Z&X-Amz-Expires=86400&X-Amz-Signature=5baf101dbef64403814f9c7ba0b6f243ef725f6c08b8a09ab0e5da26b7a607ca&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/53928151-543c-4988-ba03-9115b444b75c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210710%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210710T015615Z&X-Amz-Expires=86400&X-Amz-Signature=3f70ba657795f1de395ae0269bdbfbb81612f2d7dac7f0db7fe8e75a64886a00&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 < Movie Detail >
 
