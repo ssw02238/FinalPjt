@@ -190,7 +190,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 
 .movie-detail {

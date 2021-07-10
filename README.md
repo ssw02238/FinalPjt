@@ -72,39 +72,39 @@
 >     
 >
 >     - 가입 시 나이 정보를 입력하여 연령대 별 영화 추천 
->            
+>                
 >         → 자신이 리뷰를 작성한 영화 중 별점이 4점 이상인 영화들과 유사한 영화를 랜덤으로 추천하는 기능으로 변경 
 >
 >         
 >
 >     -  게시할 영화 정보 (대세 컨텐츠) 
->            
+>                
 >         →  Popular 기능으로 구현 
->            
+>                
 >         →  그 외 최신작으로 tmdb의 latest url을 사용하려고 했으나, 하나의 영화 정보만 담겨와서 실패 (추후 now playing으로 구현)
 >
 >         
 >
 >     - 해당 영화의 리뷰가 작성된 네이버 블로그로 가게 하기 
->            
+>                
 >         → 디테일 페이지에서 유튜브 예고편과 한줄평 리뷰가 바로 나오도록 개선
 >
 >         
 >
 >     - 리뷰 작성 관련 
->            
+>                
 >         → 리뷰 게시글 > 영화 디테일로 이동 가능 및 댓글 형식으로 리뷰 제목만 보이게 
->            
+>                
 >         → 누르면 리뷰 글로 이동부분은 리뷰 detail이 필요없다고 판단하여 계획 수정 
->            
+>                
 >         → 그 외 디테일에서 댓글의 한줄평과 별점이 보이도록 변경
 >
 >         
 >
 >     - Event 장르 별 랜덤 영화 픽 
->            
+>                
 >         → 사용자에게 custom 된 영화 추천을 위해 평점 4점 이상을 준 영화들 기준으로 영화 추천 
->            
+>                
 >         → 그 외 영화 분위기를 날씨 정보로 받아 가장 많이 받은 날씨를 기준으로 영화 detail 페이지에 각각 다른 문구 등장 
 
 
@@ -252,27 +252,45 @@ Notion : https://www.notion.so/SSAFY-b944695aeeb24cb5a9825674d6519e92
 
 < Popular / Now playing >
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/53928151-543c-4988-ba03-9115b444b75c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210710%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210710T015615Z&X-Amz-Expires=86400&X-Amz-Signature=3f70ba657795f1de395ae0269bdbfbb81612f2d7dac7f0db7fe8e75a64886a00&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![image-20210710110244202](README.assets/image-20210710110244202.png)
+
+![image-20210710110220279](README.assets/image-20210710110220279.png)
+
+
 
 < Movie Detail >
 
 - 줄거리와 예고편이 모두 존재할 때
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/005326fe-9b28-401f-a7d9-456c95e9187c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210527T015245Z&X-Amz-Expires=86400&X-Amz-Signature=0a8cf9639d9df7de4019109b167887f5ad099d253028d4a9555f70c45cddd3bf&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![image-20210710111803143](README.assets/image-20210710111803143.png)
 
 - 줄거리와 예고편이 모두 존재하지 않을 때
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/adb051fe-b298-448b-b005-235df448a0ac/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210527T015255Z&X-Amz-Expires=86400&X-Amz-Signature=82d431f55dcdd71d4d7e8877976e5d36b5101a3f6985a76a7feb513cc13c0594&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![image-20210710111858483](README.assets/image-20210710111858483.png)
+
+- 영화 리뷰가 존재할 경우
+
+![image-20210710112006473](README.assets/image-20210710112006473.png)
+
+
 
 - 한줄평 커뮤니티
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/15936b6a-b7f8-4cfd-8be7-3841395e39df/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210527T015306Z&X-Amz-Expires=86400&X-Amz-Signature=31838120fec55aea4404618d6db9140b5acac9d5c1d6815ac128995f6f8fd049&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/faf3be80-bd92-4591-af78-5382d3187d8c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210710%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210710T022043Z&X-Amz-Expires=86400&X-Amz-Signature=dd2b05a1d98839ad213260c45725d6cbb1da78a7b0b8e7626536d8f4b298b48f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 
 - 새글 작성
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7fff48d1-4dff-431b-b73e-b1a1a5540666/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210527T015319Z&X-Amz-Expires=86400&X-Amz-Signature=b7c27addafb5908d8ce59182c424d24fa828bde91213717aefc0bfb35e2d5160&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![image-20210710110357934](README.assets/image-20210710110357934.png)
+
+
 
 - My  page (하단 추천 영화는 사이트 비율에 따른 grid 구성)
 
-![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d9841c43-f917-486a-b5ec-1e1ee82cbe05/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210527%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210527T015329Z&X-Amz-Expires=86400&X-Amz-Signature=7df30faae71e492a7677d3c04760e54357163ffdb409b8aae5b23c7b915d3e14&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8df46386-c6e3-4b66-bc2e-d91d64daf716/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210710%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210710T022108Z&X-Amz-Expires=86400&X-Amz-Signature=fe1b64de5cb1fac5aea2e12851be6ddce4f34248d834985b64f1af6355d08c66&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+
+<Login / Signup>
+
+![img](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F92db7b5d-b704-4f44-8722-e363faa233ab%2FUntitled.png?table=block&id=ae140fbc-91ce-4572-9601-796ef0830be2&spaceId=2756e829-79dc-4b12-a2b0-aa9dae95f129&width=3200&userId=a644f926-4a5c-4321-b640-09d595179e74&cache=v2)
+
+![img](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/93d8541e-45d4-4776-b608-cfd3bb4e363e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210710%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210710T020738Z&X-Amz-Expires=86400&X-Amz-Signature=355f0796fe98403c4b649fad8b73b42d387e8ba60661dae78944a2cb34db98d6&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
 

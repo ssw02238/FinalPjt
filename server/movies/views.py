@@ -16,7 +16,6 @@ def seeding(request):
     for pageNum in range(1, 10): 
         URL = f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=ko-KR&page={pageNum}'
         res = requests.get(URL).json()
-
         for movie_info in res['results']:
             if not Movie.objects.filter(id=movie_info['id']).exists():
                 serializer = MovieSerializer(data=movie_info)
